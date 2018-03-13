@@ -1,11 +1,13 @@
+### Bioinformatics Prerequisites Workshop
 ## 26 - 28 March 2018
 
 [github link](https://github.com/ucdavis-bioinformatics-training/2018-March-Bioinformatics-Prerequisites)
 
 Monday
 ----------
-* [Introduction and Getting Connected](monday/intro.md)
-* [Unix & the Command Line](monday/unix.md)
+* [Introduction and Getting Connected](monday/command-line-intro.md)
+* [Introduction to Bioinformatics - TALK](monday/biofx_intro.md
+* [Unix & the Command Line](monday/unix_intro.md)
 * [Installing Simple Bioinformatics Software](monday/software.md)
 
 Tuesday
