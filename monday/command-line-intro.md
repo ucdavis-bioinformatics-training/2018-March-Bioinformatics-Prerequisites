@@ -1,25 +1,12 @@
 Intro to the Command Line
 ==========================
 
-Joe Fass
-
-jnfass@ucdavis.edu
-
-
 Getting There
 --------------------------------
 
 Secure SHell ... ssh.
 
     ssh [class#@]ganesh.genomecenter.ucdavis.edu
-
-You should immediately "log in" (start an interactive srun session) to the cluster, to avoid accidentally running anything that takes any processor time or memory on the shared head node (cabernet).
-
-    srun -t 1440 -c 4 -n 1 --mem 8000 --reservation workshop --pty /bin/bash
-
-You'll see, eventually:
-
-    srun: job ####### has been allocated resources
 
 To start off: there will be many commands that will fill your screen with text. There are multiple ways to clear the clutter, and have an empty screen:
 
@@ -32,10 +19,10 @@ And once you're really done working on the command line:
 
     exit  # kills the current shell!
     # Note that any text *following* a "#" symbol is ignored.
-    # Note that, in this case, the first 'exit' will exit the srun job
-    # ... you'd need another 'exit' to log out of cabernet
+    # This will 'exit' (close) your shell on ganesh
+    # ... you'd need another 'exit' to close your local terminal (if on a Mac / Linux system)
 
-But don't exit yet ... or if you did, just ssh back in (or run the srun command if you're still on cabernet). We've got work to do!
+But don't exit yet ... or if you did, just ssh back in ... We've got work to do!
 
 Command Line Basics
 --------------------
@@ -56,24 +43,25 @@ Let's run our first command ... because one of the first things that's good to k
     R  # enter R interactive session
     <ctrl-d>
     # Try this fun command:
-    yes  # that's a lot of yes
-    <ctrl-c>
-    yes | more  # "pipe," or direct, the yes output to the 'more' command
-    <spacebar>
+    curl -s http://metaphorpsum.com/sentences/1000  # that's some deep stuff
+    curl -s http://metaphorpsum.com/sentences/1000 | more  # "pipe (|)," or direct, the text to the 'more' command
     <spacebar>  # next page
     <q>  # quits from more, less, 'man' pages, etc.
 
 So, ^C, ^D, 'q', and (from above) 'exit'. Generally can't hurt to try until one of them works! Now that we've seen the 'less' "paginator" (program that display output from other programs in pages, instead of all at once), here's how to move around while in it.
 
-    yes | less  # pipe to 'less' paginator, instead of 'more'
-    <spacebar>
+    curl -s http://metaphorpsum.com/sentences/1000 | fold -w 80 -s | less  # pipe to 'less' paginator, instead of 'more'
+    <spacebar>  # next page
     <arrow keys, pgup, pgdn>  # forward or back through file
-    g *or* G  # beginning or end of file
-    /s  # '/' enters search mode, "es" is pattern looked for (could be any string)
-    /y 
-    /no
+    g  # beginning ...
+    G  # ... or end of file
+    /A<enter>  # '/' enters search mode, "A" is pattern looked for (could be any string)
+    /;<enter>  # find semicolons
+    /.<enter>  # surprise! '.' is a special character that means any character
+    /T.e<enter>  # should find 'The', 'They', maybe 'Toe'?
     # After searching for some text, using the '/' key, you can use:
-    n *or* N  # next or previous pattern match
+    n  # next pattern match ...
+    N  # ... or previous pattern match
     q  # to quit
 
 
@@ -88,19 +76,20 @@ One reason you'll appreciate 'less' is that it's the default paginator for the '
     ls -R /software/scythe  # lists directories and files *recursively*
     # how do I know which options do what?
     man ls
-    # navigate like in "less" (up/down,pgup/dn,g,G,/pattern,n,N,q)
+    # navigate like in "less" (up,down,pgup,pgdn,g,G,/pattern,n,N,q)
     # look up and try the following:
-    ls -l
+    ls -l  # if you don't say where, it lists files in your current directory
     ls -a
     ls -l -a
     ls -la  # option "smushing" ... when no values need specifying
     ls -ltrha
     ls -ltrha --color  # single letter (smushed) vs word options
-    # what if I want to use same options repeatedly? and be lazy?
+    # Quick aside: what if I want to use same options repeatedly? and be lazy?
     alias  # lists current *command aliases* or *shortcuts*
     alias ll='ls -ltrhaF --color'
     ll
     alias l='ls --color'
+    l
 
 
 Getting Around
@@ -394,7 +383,7 @@ Loops
 
 Loops are useful for quickly telling the shell to perform one operation after another, in series. For example:
 
-    for i in {1..21}; do echo $i >> a; done
+    for i in {1..21}; do echo $i >> a; done  # put multiple lines of code on one line, each line terminated by ';'
     cat a
     # <1 through 21 on separate lines>
 
@@ -406,7 +395,9 @@ The general form is:
 
 The list can be a sequence of numbers or letters, or a group of files specified with wildcard characters:
 
-    # imagine you have 20 sequence files, in a 'fastqs' directory:
+    for i in {3,2,1,liftoff}; do echo $i; done  # needs more excitement!
+    for i in {3,2,1,"liftoff!"}; do echo $i; done  # exclamation point will confuse the shell unless quoted
+    # Now imagine you have 20 sequence files, in a 'fastqs' directory:
     bwa index reference.fa
     for sample in fastqs/*.fastq; do
         bwa mem reference.fa $sample 1> $sample.sam 2> $sample.err
@@ -436,7 +427,7 @@ The paste command is useful in creating tables.
     echo "control1" >> b
     echo "control2" >> b
     # now we can number our four samples to conveniently refer to them in order
-    for i in {1..4}; do echo $i >> a; done  # semicolons terminate separate lines of multi-line commands like loops
+    for i in {1..4}; do echo $i >> a; done
     paste a b > c
     cat c
 

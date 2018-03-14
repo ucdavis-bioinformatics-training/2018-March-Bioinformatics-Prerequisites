@@ -6,7 +6,7 @@
 Monday
 ----------
 * [Introduction and Getting Connected](monday/command-line-intro.md)
-* [Introduction to Bioinformatics - TALK](monday/biofx_intro.md
+* [Introduction to Bioinformatics - TALK](monday/What_is_Bioinformatics.pdf)
 * [Unix & the Command Line](monday/unix_intro.md)
 * [Installing Simple Bioinformatics Software](monday/software.md)
 
