@@ -15,6 +15,7 @@ Tuesday
 
 * [Advanced Command Line Topics](tuesday/advancedCL.md)
 * [Clusters, Modules, and Version Control, oh my!](tuesday/clusModGit.md)
+* [Introduction to the R Statistical Programming Language](tuesday/Intro2R.md)
 
 Wednesday
 ------------
@@ -22,6 +23,7 @@ Wednesday
 * [Intro to R and R Studio](wednesday/r.md)
 * [Intro to Bioconductor](wednesday/bioconductor.md)
 * [Basic Statistical Modeling](wednesday/stats.md)
+* [Plotting in R with ggplot2](wednesday/ggplot2.md)
 
 Evaluation!
 ----------
