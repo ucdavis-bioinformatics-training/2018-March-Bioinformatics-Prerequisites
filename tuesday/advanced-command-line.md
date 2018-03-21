@@ -66,6 +66,8 @@ Now you need to edit your PATH.
 
 **8\.** .bashrc/.bash_profile and aliases setup & the PATH variable
 
+MORE BASH
+
 ---
 
 **9\.** Intro to perl
