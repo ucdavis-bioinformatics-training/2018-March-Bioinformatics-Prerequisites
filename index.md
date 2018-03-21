@@ -8,6 +8,7 @@ Monday
 * [Introduction and Getting Connected](monday/logging-in.md)
 * [Introduction to Bioinformatics - TALK](monday/What_is_Bioinformatics.pdf)
 * [Unix & the Command Line](monday/command-line-intro.md)
+* Some Bioinformatics Formats - TALK
 * [Installing Simple Bioinformatics Software](monday/software.md)
 
 Tuesday
