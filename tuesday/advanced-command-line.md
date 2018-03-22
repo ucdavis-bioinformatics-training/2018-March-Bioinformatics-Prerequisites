@@ -1,7 +1,10 @@
 Advanced Command-Line
 =======================
 
-**1\.** Let's take a closer look at the 'sed' command. sed is a command that allows you to manipulate character data in various ways. One useful thing it can do is substitution. First, make a directory called "advanced" in your home directory and go into it.
+The sed command
+----------------
+
+Let's take a closer look at the 'sed' command. sed is a command that allows you to manipulate character data in various ways. One useful thing it can do is substitution. First, make a directory called "advanced" in your home directory and go into it.
 
     cd
     mkdir advanced
@@ -36,9 +39,10 @@ Another useful use of sed is for capturing certain lines from a file. You can se
 
 This will just select the 4th line from the file.
 
----
+More pipes
+-----------
 
-**2\.** Now, let's delve into pipes a little more. Pipes are a very powerful way to look at and manipulate complex data using a series of simple programs. First take a look at the contents of the "/home" directory:
+Now, let's delve into pipes a little more. Pipes are a very powerful way to look at and manipulate complex data using a series of simple programs. First take a look at the contents of the "/home" directory:
 
     ls /home
 
@@ -78,9 +82,10 @@ Finally, as before, we need to sort the data and then use "uniq -c" to count. Th
 
 Now you have a list of how many reads were categorized into each barcode. Here is a [sed tutorial](https://www.digitalocean.com/community/tutorials/the-basics-of-using-the-sed-stream-editor-to-manipulate-text-in-linux) for more exercises.
 
----
+Process substitution
+---------------------
 
-**3\.** Next, we will cover process substitution. Process substitution is a way of using the output of some software as the input file to another software without having to create intermediate files. Let's use the sickle program we compiled earlier (and should already be in our PATH). We want to do adapter trimming on one of our fastq.gz files, but we need to give sickle an uncompressed file as input. In order to do that, we use the "gunzip" command with the "-c" option. This unzips the file and sends the output to STDOUT, instead of unzipping the file in place which is the default (This will take a few minutes to run):
+Next, we will cover process substitution. Process substitution is a way of using the output of some software as the input file to another software without having to create intermediate files. Let's use the sickle program we compiled earlier (and should already be in our PATH). We want to do adapter trimming on one of our fastq.gz files, but we need to give sickle an uncompressed file as input. In order to do that, we use the "gunzip" command with the "-c" option. This unzips the file and sends the output to STDOUT, instead of unzipping the file in place which is the default (This will take a few minutes to run):
 
     sickle se -f <(gunzip -c C61_S67_L006_R1_001.fastq.gz) -t sanger -o trimmed.fa
 
@@ -90,13 +95,8 @@ So we are putting the gunzip command inside parentheses with a less-than symbol 
 
 ---
 
-**4\.** for loops
-
-    for x in /share/biocore-archive/Leveau_J_UCD/RNASeq_Arabidopsis_2016/00-RawData/*/*; do basename $x; done
-    for x in /share/biocore-archive/Leveau_J_UCD/RNASeq_Arabidopsis_2016/00-RawData/*/*; do NAME=`basename $x`; echo $NAME is a file; done
-
 Loops
--------
+------
 
 Loops are useful for quickly telling the shell to perform one operation after another, in series. For example:
 
@@ -133,36 +133,116 @@ Or, imagining a file that contains the filenames (one per line) of samples' sequ
         bwa mem reference.fa $sample 1> $sample.sam 2> $sample.err
     done
 
----
+Now, let's use a for loop on some fastq files. You can specify all the parts of the for loop on one line, separated by semi-colons. First let's just echo all the names of the fastq files in a directory:
 
-**5\.** find
+    for x in /share/biocore-archive/Leveau_J_UCD/RNASeq_Arabidopsis_2016/00-RawData/*/*; do echo $x; done
+
+Now, let's use the "basename" command to get just the filename for each file:
+
+    for x in /share/biocore-archive/Leveau_J_UCD/RNASeq_Arabidopsis_2016/00-RawData/*/*; do basename $x; done
+
+We can also assign the output of a command to a new variable by using the backtick character (\`). We put the command we want inside backticks and then assign it to the variable NAME. Then we can use $NAME in the next command:
+
+    for x in /share/biocore-archive/Leveau_J_UCD/RNASeq_Arabidopsis_2016/00-RawData/*/*; do NAME=`basename $x`; echo $NAME is a file; done
+
+We can also use the backticks to generate the list for the for loop. Let's say we wanted to iterate over just the sample names in /share/biocore-archive/Leveau_J_UCD/RNASeq_Arabidopsis_2016/00-RawData. First, let's generate a list of the sample names and put them in a file:
+
+    ls -d /share/biocore-archive/Leveau_J_UCD/RNASeq_Arabidopsis_2016/00-RawData/*_L006 | cut -f7 -d/ > samples.txt
+
+This command gets the directories ending in "\_L006" and then cuts out the 7th field using the "/" as the delimiter. Take a look at the file:
+
+    cat samples.txt
+
+Now, we will use this file to generate the list in the for loop by using the backticks:
+
+    for x in `cat samples.txt`; do echo Do something with $x; done
+
+Find
+-----
+
+Find is a very powerful command that is used to recursively find files/directories in a file system. First take a look at the find man page:
+
+    man find
+
+Notice there are LOTS of options. The simplest version of the find command will simply list every file and directory within a path, as far down as it can go:
+
+    find /share/biocore/joshi/projects/genomes
+
+If we want to refine the command to only show you files that end in ".fa" (i.e. fasta files), we use the "-name" option:
 
     find /share/biocore/joshi/projects/genomes -name "*.fa"
-    find /share/biocore/joshi/projects/genomes -name "*.fa" -exec ls -l {} \;
 
----
+One of the most powerful uses of find is to execute commands on every file it finds. To do this, you use the "-exec" option. When you use that option, everything after the "-exec" is assumed to be a command, and you use the "{}" characters to substitute for the file names that it finds. So in the command below, "wc -l" will get executed sequentially for every file it finds. Finally, the exec option needs to end with a semi-colon, however, since the semi-colon is a special character that the shell will try to interpret, you need to "escape" the semi-colon with a backslash, to indicate to the shell that the semi-colon is NOT to be interpreted and just sent as is to the find command:
 
-**6\.** xargs
+    find /share/biocore/joshi/projects/genomes -name "*.fa" -exec wc -l {} \;
 
-    find /share/biocore/joshi/projects/genomes -name "*.fa" | xargs ls -lh
+You will probably want to Ctrl-C out of this because it will take a long time to go through them all.
 
----
+Xargs
+------
 
-**7\.** Installing software and git
+xargs is another command that can be very useful for running a program on a long list of files. For example, the "find" commands we ran above could be run using xargs like this:
 
-    git clone https://github.com/najoshi/sickle.git
-    cd sickle
-    cat Makefile
-    make
+    find /share/biocore/joshi/projects/genomes -name "*.fa" | xargs wc -l
 
-Now you need to edit your PATH.
+This is taking the output of the find command and then creating a list of all the filenames which it adds to the command given to xargs. So, in this case, after "xargs" comes "wc -l"... so "wc -l" will get run on the entire list of filenames from find.
 
----
 
-**8\.** .bashrc/.bash_profile and aliases setup & the PATH variable
+.bashrc/.bash_profile, aliases & the PATH variable
+-----------------------------------------------------
 
-MORE BASH
-MORE GREP
+On a Linux system, there is usually a user-modifiable file of commands that gets run every time you log in. This is used to set up your environment the way that you want it. On our systems, the file is ".bash_profile" and it resides in your home directory. Sometimes the file is called ".bashrc" as well. Take a look at a .bash_profile:
+
+    cat /home/joshi/.bash_profile
+
+This one has a lot of stuff in it to set up the environment. Now take a look at your own .bash_profile. One of the things you set up was adding to the PATH variable. One thing that is very useful to add to the PATH variable is the "." directory. This allows you to execute things that are in your current directory, specified by ".". So, let's use nano to edit our .bash_profile and add "." to PATH:
+
+    nano ~/.bash_profile
+
+Add ":." to the PATH variable. Now, next time you log in, "." will be in your PATH.
+
+Another thing that is very useful are aliases. An alias is a user-defined command that is a shortcut for another command. For example, let's say you typed the command "ls -ltrh" a lot and it would be easier to have it be a simpler command. Use an alias:
+
+    alias lt='ls -ltrh'
+
+Now, you've created an alias that lists the contents of a directory with extra information (-l), in reverse time order of last modified (-r and -t), and with human readable file sizes (-h). Try it out:
+
+    lt
+
+Typing alias by itself give you a list of all the aliases:
+
+    alias
+
+You can now put the alias command for lt in your .bash_profile and you will have it automatically when you log in.
+
+More grep
+----------
+
+Grep is a very powerful tool that has many applications. Grep can be used to find lines in a file that match a pattern, but also you can get lines above and below the matching line as well. The "-A" option to grep is used to specify number of lines after a match and the "-B" option is for number of lines before a match. So, for example, if you wanted to find a particular sequence in a fastq file and also the 3 other lines that form that entire fastq record, you would do this:
+
+    zcat C61_S67_L006_R1_001.fastq.gz | grep -B1 -A2 CACAATGTTTCTGCTGCCTGAACC
+
+This looks for the sequence "CACAATGTTTCTGCTGCCTGAACC" in the fastq file and then also prints the line before and two lines after each match. 
+
+Another thing grep can do is regular expressions. Regular expressions are a way of specifying a search pattern. Two very useful characters in regular expressions are "^" and "$". The "^" symbol specifies the beginning of a line and the "$" specifies the end of a line. So, for example, if you wanted to find just the lines that began with "TTCCAACACA" you would do this:
+
+    zcat C61_S67_L006_R1_001.fastq.gz | grep ^TTCCAACACA
+
+Without the "^", grep will find any line that has "TTCCAACACA" *anywhere* in the line, not just the beginning. Conversely, if you wanted to find the lines that ended in "TAAACTTA":
+
+    zcat C61_S67_L006_R1_001.fastq.gz | grep TAAACTTA$
+
+There are also extended regular expression that grep can use to do more complex matches, using the "-E" option:
+
+    zcat C61_S67_L006_R1_001.fastq.gz | grep -E '^TTCCAACACA|TAAACTTA$'
+
+This command will find any line that begins with "TTCCAACACA" **OR** ends with "TAAACTTA". The "|" character means OR.
+
+The Prompt
+-----------
+
+The Prompt is the part of the command line that is before where you type commands. Typically, it has your username, the name of the machine you are on, and your current directory. This, like everything else in Linux, is highly customizable.
+
 AWK
 PROMPTS
 nohup
