@@ -378,45 +378,6 @@ For the curious, our problem was that we didn't index the "target" or "reference
 The resulting SAM file shows a perfect match between the query sequence ('phix.fa') and the reference ('genome.fa') ... which is good, because they're the same file (see the symbolic links section above)! Beyond that, don't worry about the SAM format; we'll get into that tomorrow.
 
 
-Loops
--------
-
-Loops are useful for quickly telling the shell to perform one operation after another, in series. For example:
-
-    for i in {1..21}; do echo $i >> a; done  # put multiple lines of code on one line, each line terminated by ';'
-    cat a
-    # <1 through 21 on separate lines>
-
-The general form is:
-
-    for name in {list}; do
-        commands
-    done
-
-The list can be a sequence of numbers or letters, or a group of files specified with wildcard characters:
-
-    for i in {3,2,1,liftoff}; do echo $i; done  # needs more excitement!
-    for i in {3,2,1,"liftoff!"}; do echo $i; done  # exclamation point will confuse the shell unless quoted
-    # Now imagine you have 20 sequence files, in a 'fastqs' directory:
-    bwa index reference.fa
-    for sample in fastqs/*.fastq; do
-        bwa mem reference.fa $sample 1> $sample.sam 2> $sample.err
-    done
-    # this would produce, for example, ./fastqs/sample1.fastq.sam and ./fastqs/sample1.fastq.err, etc.
-
-Sometimes a "while" loop is more convenient than a "for" loop ... if you don't readily know how many iterations of the loop you want:
-
-    while {condition}; do
-        commands
-    done
-
-Or, imagining a file that contains the filenames (one per line) of samples' sequence data:
-
-    cat file-of-filenames.txt | while read sample; do
-        bwa mem reference.fa $sample 1> $sample.sam 2> $sample.err
-    done
-
-
 Paste Command
 --------------
 
