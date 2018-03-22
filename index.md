@@ -15,6 +15,7 @@ Tuesday
 ----------
 
 * [Advanced Command Line Topics](tuesday/advancedCL.md)
+* [Using Screen to Manage Multiple Projects](tuesday/screen.pdf) 
 * [Clusters, Modules, and Version Control, oh my!](tuesday/clusModGit.md)
 * [Introduction to the R Statistical Programming Language](tuesday/Intro2R.md)
 
