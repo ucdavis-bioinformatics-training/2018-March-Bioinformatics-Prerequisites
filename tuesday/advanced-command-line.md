@@ -97,8 +97,6 @@ So we are putting the gunzip command inside parentheses with a less-than symbol 
 
     less trimmed.fa
 
----
-
 Loops
 ------
 
