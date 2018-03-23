@@ -4,7 +4,7 @@ Advanced Command-Line
 The sed command
 ----------------
 
-Let's take a closer look at the 'sed' command. sed is a command that allows you to manipulate character data in various ways. One useful thing it can do is substitution. First, make a directory called "advanced" in your home directory and go into it.
+Let's take a closer look at the 'sed' command. sed (short for stream editor) is a command that allows you to manipulate character data in various ways. One useful thing it can do is substitution. First, make a directory called "advanced" in your home directory and go into it.
 
     cd
     mkdir advanced
@@ -38,6 +38,9 @@ Another useful use of sed is for capturing certain lines from a file. You can se
     sed '4q;d' BSD
 
 This will just select the 4th line from the file.
+
+**CHALLENGE:**
+See if you can find a way to use sed to remove all the spaces from the BSD file.
 
 More pipes
 -----------
@@ -85,6 +88,9 @@ Now you have a list of how many reads were categorized into each barcode. Here i
 One final thing to know is that if a program does not take input from STDIN (which is needed to use it in a pipe), but instead wants a filename, you can use a single dash by itself in place of the filename and the shell will interpret that to be input from STDIN. So it would look something like this:
 
     cat FILENAME | COMMAND -f - -otheroptions | ....
+
+**CHALLENGE:**
+Find the distribution of the first 5 bases of all the reads in C61_S67_L006_R1_001.fastq.gz. I.e., count the number of times the first 5 bases of every read occurs across all reads.
 
 Process substitution
 ---------------------
@@ -158,6 +164,9 @@ This command gets the directories ending in "\_L006" and then cuts out the 7th f
 Now, we will use this file to generate the list in the for loop by using the backticks:
 
     for x in `cat samples.txt`; do echo Do something with $x; done
+
+**HARD CHALLENGE:**
+Use a for loop with pipes to recreate the result from above where we wanted to find how many directory names in /home began with each letter. You will need to create a for loop to get the letters and then pipe the result of the for loop to commands to do the counting.
 
 Find
 -----
@@ -240,6 +249,9 @@ There are also extended regular expression that grep can use to do more complex 
 
 This command will find any line that begins with "TTCCAACACA" **OR** ends with "TAAACTTA". The "|" character means OR.
 
+**CHALLENGE:**
+Find a way to use grep to match any line that has between 7 and 16 'A's in a row at the end of the line. You will probably need to look at the man page for grep.
+
 The Prompt
 ------------
 
@@ -294,9 +306,4 @@ The nohup (short for "no hangup") command is useful for running a job from a ter
 
     nohup YOUR COMMAND &
 
-
-Intro to perl?
----------------
-
-Perl?
 
