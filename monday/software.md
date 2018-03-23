@@ -5,12 +5,14 @@ Installing Simple Bioinformatics Software
 
 ---
 
-**2\.** Find sickle and navigate to the page. Click on "Clone or Download" and copy the URL. In your home directory, create a "software" directory and go into it. Clone the git repository in the software directory:
+**2\.** Find sickle and navigate to the page. Click on "Clone or Download" and copy the URL. In your home directory, create a "software" directory and go into it. In order to clone (get a copy of) the repository, we need to use the "git" command. Clone the git repository in the software directory:
 
 	cd
 	mkdir software
 	cd software
 	git clone https://github.com/ucdavis-bioinformatics/sickle.git
+
+git has many subcommands, but the one you will use the most (unless you are creating software) is "git clone" to get a copy of the source code for some software from github.
 
 ---
 
