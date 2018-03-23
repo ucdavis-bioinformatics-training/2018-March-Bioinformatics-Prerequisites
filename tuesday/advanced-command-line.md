@@ -82,6 +82,10 @@ Finally, as before, we need to sort the data and then use "uniq -c" to count. Th
 
 Now you have a list of how many reads were categorized into each barcode. Here is a [sed tutorial](https://www.digitalocean.com/community/tutorials/the-basics-of-using-the-sed-stream-editor-to-manipulate-text-in-linux) for more exercises.
 
+One final thing to know is that if a program does not take input from STDIN (which is needed to use it in a pipe), but instead wants a filename, you can use a single dash by itself in place of the filename and the shell will interpret that to be input from STDIN. So it would look something like this:
+
+    cat FILENAME | COMMAND -f - -otheroptions | ....
+
 Process substitution
 ---------------------
 
@@ -239,28 +243,62 @@ There are also extended regular expression that grep can use to do more complex 
 This command will find any line that begins with "TTCCAACACA" **OR** ends with "TAAACTTA". The "|" character means OR.
 
 The Prompt
------------
+------------
 
-The Prompt is the part of the command line that is before where you type commands. Typically, it has your username, the name of the machine you are on, and your current directory. This, like everything else in Linux, is highly customizable.
+The Prompt is the part of the command line that is the information on the screen before where you type commands. Typically, it has your username, the name of the machine you are on, and your current directory. This, like everything else in Linux, is highly customizable. Your current prompt probably has your username, your hostname, and your current directory. However, there are many other things you could add to it if you so desired. The environment variable used for your prompt is "PS1". So to change your prompt you just need to reassign PS1. There are some special escape characters that you use to specify your username, hostname, etc... these can be found in the "PROMPTING" section of the bash man page:
 
-AWK
-PROMPTS
-nohup
-using "-" for input file in pipes
+    man bash
 
----
+Then type "/" and "PROMPTING" to find the section. You'll see that for username it is "\u", for hostname it is "\h", and for the full current working directory it is "\w". So you would change your prompt by doing this:
 
-**9\.** Intro to perl
+    export PS1="\u@\h:\w\\$ "
 
----
+The convention is to put the "@" symbol and the ":" symbol to delineate the different parts, but you can use anything you want. Also, it is convention to put a "$" at the end to indicate the end of the prompt.
 
-**10\.** Intro to mysql
+You can also do all kinds of fancy things in your prompt, like color and highlighting. Here is an example of such a prompt:
 
-    wget https://ucdavis-bioinformatics-training.github.io/2017-June-RNA-Seq-Workshop/monday/db.sqlite3
-    sqlite3 db.sqlite3
+    export PS1='\[\033[7;29m\]\u@\h\[\033[0m\]:\[\e[1m\]\w\[\e[m\]$ '
 
----
+When you have a prompt you like, you can put it in your .bash_profile/.bashrc so that it is automatically set when you log in.
 
-**11\.** Intro to python
 
+Awk
+----
+
+Awk is a simple programming language that can be used to do more complex filtering of data. Awk has many capabilities, and we are only going to touch on one of them here. One really useful thing is to filter lines of a file based on the value in a column. Let's get a file with some data:
+
+    wget https://ucdavis-bioinformatics-training.github.io/2018-March-Bioinformatics-Prerequisites/tuesday/DMR.GBM2.vs.NB1.bed
+
+Take a look at the beginning of the file:
+
+    head DMR.GBM2.vs.NB1.bed
+
+Let's say we wanted to get only the lines where the pvalue (column 10) was below a certain value. In awk, the default delimiter is the tab character, which most bioinformatics files use as their delimiter. Using the tab as a delimiter, it assigns each value in a column to the variables $1, $2, $3, etc... for as many columns as there are. So if we wanted to get lines where the pvalue column was under 0.00000005 pvalue:
+
+    cat DMR.GBM2.vs.NB1.bed | awk '$10 < 0.00000005'
+
+And lines where the pvalue >= 0.00000005:
+
+    cat DMR.GBM2.vs.NB1.bed | awk '$10 >= 0.00000005'
+
+You can also use it to extract lines with a particular word in a column:
+
+    cat DMR.GBM2.vs.NB1.bed | awk '$1 == "chr3"'
+
+A double equals (==) is used for equality comparisons. This will pull out lines where the chromosome column is "chr3".
+
+Take a look at the [awk manual](https://www.gnu.org/software/gawk/manual/gawk.html) to learn more about the capabilities of awk.
+
+Nohup
+------
+
+The nohup (short for "no hangup") command is useful for running a job from a terminal and then wanting to exit the terminal. When you run a job, even if you put it in the background (i.e. by using "&"), the job is tied to the terminal you are running on. When you log out of that terminal, any job tied to that terminal will be killed. This is not desirable, so you can use the nohup command which will disconnect the proccess from the terminal. Simply put "nohup" in front of the command, and you will probably want to add the "&" at the end to put it in the background so you can get your prompt back. It would look something like this:
+
+    nohup YOUR COMMAND &
+
+
+Intro to perl?
+---------------
+
+Perl?
 
