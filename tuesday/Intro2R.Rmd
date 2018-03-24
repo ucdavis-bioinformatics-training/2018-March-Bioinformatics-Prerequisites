@@ -59,7 +59,7 @@ RStudio has many features:
 * smart indentation
 * "Projects"
 * workspace browser and data viewer
-* imbedded plots
+* embedded plots
 * Sweave authoring and knitr with one click pdf or html
 * runs on all platforms and over the web
 
