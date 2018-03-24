@@ -25,8 +25,6 @@ Wednesday
 ------------
 
 * Review and Q&A
-* [Intro to R Studio - HANDS-ON](wednesday/r.md)
-* [Intro to Bioconductor - HANDS-ON](wednesday/bioconductor.md)
 * [Basic Statistical Modeling - TALK](wednesday/stats.md)
 * [Plotting in R with ggplot2 - HANDS-ON](wednesday/ggplot2.md)
 
