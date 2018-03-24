@@ -1,7 +1,7 @@
 Installing Simple Bioinformatics Software
 ===========================================
 
-**1\.** Let's install some simple software. We will first install a read trimming called **sickle** written by members of the Bioinformatics Core. The source code for many bioinformatics software are on github.... sickle is found on the [Bioinformatics Core github page](https://github.com/ucdavis-bioinformatics).
+**1\.** Let's spend some more time installing software. We will first install an Illumina read trimmer called **sickle** written by members of the Bioinformatics Core. The source code for many bioinformatics software are on github.... sickle is found on the [Bioinformatics Core github page](https://github.com/ucdavis-bioinformatics).
 
 ---
 
@@ -105,7 +105,7 @@ This creates a new, empty "samtools" directory in our previously created "softwa
 
 ---
 
-**12\.** Now, you will notice that the "samtools-1.7" directory has a file called "configure" in it. Whenever software has this file, you need to run it first before running "make". We are going to run it and include the directory where we want the final product to go (using the --prefix flag):
+**12\.** Now, you will notice that the "samtools-1.7" directory has a file called "configure" in it. Whenever software has this file, you need to run it first before running "make". We are going to run it and include the directory where we want the final product to go (using the \-\-prefix flag):
 
 	./configure --prefix=~/software/samtools
 

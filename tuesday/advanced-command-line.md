@@ -247,7 +247,7 @@ There are also extended regular expression that grep can use to do more complex 
 
     zcat C61_S67_L006_R1_001.fastq.gz | grep -E '^TTCCAACACA|TAAACTTA$'
 
-This command will find any line that begins with "TTCCAACACA" **OR** ends with "TAAACTTA". The "|" character means OR.
+This command will find any line that begins with "TTCCAACACA" **OR** ends with "TAAACTTA". The "\|" character means OR.
 
 **CHALLENGE:**
 Find a way to use grep to match any line that has between 7 and 16 'A's in a row at the end of the line. You will probably need to look at the man page for grep.
