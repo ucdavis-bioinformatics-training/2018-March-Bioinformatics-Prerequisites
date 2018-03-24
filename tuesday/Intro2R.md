@@ -3,21 +3,18 @@ Introduction to R
 
 Download [R Notebook](Intro2R.Rmd) (same content below, but .Rmd file can be used in R-Studio).
 
-R for Biologist - An Introduction to R (Beginner)
-========================================================
+# R for Biologists - An Introduction to R (Beginner)
 
-What is R
---------------------------------------------------------
-R is a language and environment for statistical computing and graphics. It provides a wide variety of statistical and graphical techniques (linear and nonlinear modelling, statistical tests, time series analysis, classification, clustering, ...)  and graphical techniques, and is highly extensible. It is a GNU project (Free and Open Source) which is similar to the S language and environment which was developed at Bell Laboratories (formerly AT&T, now Lucent Technologies) by John Chambers and colleagues. R was created by Ross Ihaka and Robert Gentleman[4] at the University of Auckland, New Zealand, and now, R is developed by the R Development Core Team, of which Chambers is a member. R is named partly after the first names of the first two R authors (Robert Gentleman and Ross Ihaka), and partly as a play on the name of S. R can be considered as a different implementation of S. There are some important differences, but much code written for S runs unaltered under R. 
+## What is R?
+R is a language and environment for statistical computing and graphics. It provides a wide variety of statistical and graphical techniques (linear and nonlinear modelling, statistical tests, time series analysis, classification, clustering, ...)  and graphical techniques, and is highly extensible, meaning that the user community can write new R tools for any conceivable application. It is a GNU project (Free and Open Source) which is similar to the S language and environment which was developed at Bell Laboratories (formerly AT&T, now Lucent Technologies) by John Chambers and colleagues. R was created by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand, and now, R is developed by the R Development Core Team, of which Chambers is a member. R is named partly after the first names of the first two R authors (Robert Gentleman and Ross Ihaka), and partly as a play on the name of S. R can be considered as a different implementation of S. There are some important differences, but much code written for S runs unaltered under R. 
 
 Some of R's strengths:
 * The ease with which well-designed publication-quality plots can be produced, including mathematical symbols and formulae where needed. Great care has been taken over the defaults for the minor design choices in graphics, but the user retains full control.
 * It compiles and runs on a wide variety of UNIX platforms and similar systems (including FreeBSD and Linux), Windows and MacOS.
 * R can be extended (easily) via packages.
 * R has its own LaTeX-like documentation format, which is used to supply comprehensive documentation, both on-line in a number of formats and in hardcopy.
-* Its FREE!
+* It's FREE!
 * It has a vast community both in academia and in business.
-
 
 ### The R environment
 R is an integrated suite of software facilities for data manipulation, calculation and graphical display. It includes
@@ -32,11 +29,10 @@ The term "environment" is intended to characterize it as a fully planned and coh
 
 R, like S, is designed around a true computer language, and it allows users to add additional functionality by defining new functions. Much of the system is itself written in the R dialect of S, which makes it easy for users to follow the algorithmic choices made. For computationally-intensive tasks, C, C++ and Fortran code can be linked and called at run time. Advanced users can write C code to manipulate R objects directly.
 
-Many users think of R as a statistics system. The R group, prefers to think of it of an environment within which statistical techniques are implemented.
+Many users think of R as a statistics system. The R group prefers to think of it of an environment within which statistical techniques are implemented.
 
 
-The R Homepage
---------------------------------------
+### The R Homepage
 The R homepage has a wealth of information on it,
 
 [R-project.org](http://r-project.org/)
@@ -49,8 +45,7 @@ On the homepage you can:
 
 
 
-RStudio
---------------------------------------
+### RStudio
 
 Relatively new project that is the BEST integrated developement environment I have ever used.
 
@@ -67,8 +62,7 @@ RStudio has many features:
 * runs on all platforms and over the web
 
 
-Topics covered in this introduction to R
-====================================================
+## Topics covered in this introduction to R
 1. Basic data types in R
 2. Importing and exporting data in R
 3. Basic statistics in R
@@ -77,11 +71,9 @@ Topics covered in this introduction to R
 6. Installing packages in R
 
 
+## Topic 1. Basic data types in R
 
-Topic 1. Basic data types in R
-====================================================
-
-# Simple variables: variables that have a numeric value, a character value (such as a string), or a logical value (True or False)
+### Simple variables: variables that have a numeric value, a character value (such as a string), or a logical value (True or False)
 
 Examples of numeric values.
 ```{r}
@@ -139,7 +131,7 @@ as.character(b)
 ```
 
 
-# Vectors: a vector is a combination of multiple values(numeric, character or logical) in the same object. A vector is created using the function c() (for concatenate).
+### Vectors: a vector is a combination of multiple values(numeric, character or logical) in the same object. A vector is created using the function c() (for concatenate).
 
 ```{r}
 friend_ages <- c(21, 27, 26, 32)
@@ -160,7 +152,7 @@ names(friend_ages) <- friend_names
 friend_ages
 ```
 
-Or One may create a vector with named elements from scratch.
+Or, one may create a vector with named elements from scratch.
 ```{r}
 friend_ages <- c(Mina=21, Ella=27, Anna=26, Cora=32)
 friend_ages
@@ -196,7 +188,7 @@ my_friends[has_child == "TRUE"]
 *** NOTE: a vector can only hold elements of the same type.
 
 
-# Matrices: A matrix is like and Excel sheet containing multiple rows and columns. It is used to combine vectors of the same type.
+### Matrices: A matrix is like and Excel sheet containing multiple rows and columns. It is used to combine vectors of the same type.
 
 ```{r}
 col1 <- c(1,3,8,9)
@@ -277,7 +269,7 @@ apply(my_matrix, 1, median)
 ```
 
 
-# Factors: a factor represents categorical or groups in data. The function factor() can be used to create a factor variable.
+### Factors: a factor represents categorical or groups in data. The function factor() can be used to create a factor variable.
 
 ```{r}
 friend_groups <- factor(c(1,2,1,2))
@@ -329,7 +321,7 @@ table(friend_groups)
 ```
 
 
-# Data frames: a data frame is like a matrix but can have columns with different types (numeric, character, logical).
+### Data frames: a data frame is like a matrix but can have columns with different types (numeric, character, logical).
 
 A data frame can be created using the function data.frame().
 
@@ -413,7 +405,7 @@ A data frame can also be extended using the functions cbind() and rbind().
 cbind(friends, salary=c(4000, 8000, 2000, 6000))
 ```
 
-# Lists: a list is an ordered collection of objects, which can be any type of R objects (vectors, matrices, data frames).
+### Lists: a list is an ordered collection of objects, which can be any type of R objects (vectors, matrices, data frames).
 
 A list can be created using the function list().
 
@@ -455,10 +447,9 @@ my_list[[3]][2]
 ```
 
 
-Topic 2. Importing and exporting data in R
-====================================================
+## Topic 2. Importing and exporting data in R
 
-R base function read.table() is a general funciton that can be used to read a file in table format. The data will be imported as a data frame.
+The R base function read.table() is a general funciton that can be used to read a file in table format. The data will be imported as a data frame.
 
 ```{r}
 # If you have downloaded the raw_counts.txt file to your working directory, you may use the following command to read it in.
@@ -516,8 +507,7 @@ cat("\\newpage")
 ```
 
 
-Topic 3. Basic statistics in R
-====================================================
+## Topic 3. Basic statistics in R
 
 ```{r echo=FALSE, results= 'asis'}
 library(knitr)
@@ -543,8 +533,7 @@ apply(data, 2, quantile)
 ```
 
 
-Topic 4. Simple data visulization in R
-====================================================
+## Topic 4. Simple data visulization in R
 
 Scatter plot can be produced using the function plot().
 
@@ -567,15 +556,13 @@ boxplot(x)
 ```
 
 
-Topic 5. lapply(), sapply()
-====================================================
+## Topic 5. lapply(), sapply()
 
-# lapply() is to apply a given function to every element of a list and obtain a list as results.
-# The difference between lapply() and apply() is that lapply() can be applied on objects like dataframes, lists or vectors. Function apply() only works on an array of dimension 2 or a matrix.
+lapply() is to apply a given function to every element of a list and obtain a list as results. The difference between lapply() and apply() is that lapply() can be applied on objects like dataframes, lists or vectors. Function apply() only works on an array of dimension 2 or a matrix.
 
 # To check the syntax of using lapply():
 ```{r}
-#?lapply()
+?lapply
 
 data <- as.data.frame(matrix(rnorm(49), ncol=7), stringsAsFactors=F)
 dim(data)
@@ -584,7 +571,7 @@ apply(data, MARGIN=1, sum)
 lapply(1:dim(data)[1], function(x){log10(sum(data[x,]))})
 ```
 
-# The function sapply() works like function lapply(), but tries to simplify the output to the most elementary data structure that is possible. As a matter of fact, sapply() is a "wrapper" function for lapply(). By default, it returns a vector.
+The function sapply() works like function lapply(), but tries to simplify the output to the most elementary data structure that is possible. As a matter of fact, sapply() is a "wrapper" function for lapply(). By default, it returns a vector.
 
 ```{r}
 # To check the syntax of using sapply():
@@ -593,14 +580,13 @@ lapply(1:dim(data)[1], function(x){log10(sum(data[x,]))})
 sapply(1:dim(data)[1], function(x){log10(sum(data[x,]))})
 ```
 
-# If the "simplify" parameter is turned off, sapply() will produced exactly the same results as lapply(), in the form of a list. By default, "simplify" is turned on.
+If the "simplify" parameter is turned off, sapply() will produced exactly the same results as lapply(), in the form of a list. By default, "simplify" is turned on.
 ```{r}
 sapply(1:dim(data)[1], function(x){log10(sum(data[x,]))}, simplify=FALSE)
 ```
 
 
-Topic 6. Installing packages in R
-====================================================
+## Topic 6. Installing packages in R
 
 There are two ways to install bioconductor packages in R: biocLite(), install.packages()
 
@@ -623,7 +609,7 @@ library(devtools)
 install_github("stephenturner/qqman")
 ```
 
-# biocLite() is the recommended way to install Bioconductor packages. 
+*** biocLite() is the recommended way to install Bioconductor packages. 
 
 * Bioconductor has a repository and release schedule that differ from R (Bioconductor has a ‘devel’ branch to which new packages and updates are introduced, and a stable ‘release’ branch emitted once every 6 months to which bug fixes but not new features are introduced). This mismatch causes that the version detected by install.packages() is sometimes not the most recent 'release'. 
 
@@ -631,7 +617,7 @@ install_github("stephenturner/qqman")
 
 * An indirect consequence of Bioconductor's structured release is that packages generally have more extensive dependences with one another.
 
-# To update the installed Bioconductor packages.
+### To update the installed Bioconductor packages.
 ```{r}
 #biocLite("BiocUpgrade")
 ```
