@@ -296,6 +296,17 @@ When we want to specify or operate on sets of files all at once.
     find . -name "*.fa"
     find . -name "*.f?"  # how is this different from the previous command?
 
+Quick Note About the Quote(s)
+-------------------------------
+
+The quote characters " and ' are different. In general, single quotes preserve the *literal* meaning of all characters between them. On the other hand, double quotes allow the shell to see what's between them and make substitutions when appropriate. For example:
+
+    VRBL=someText
+    echo '$VRBL'
+    echo "$VRBL"
+
+However, some commands try to be 'smarter' about this behavior, so it's a little hard to predict what will happen in all cases. It's safest to experiment first when planning a command that depends on quoting ... list filenames first, instead of changing them, etc.
+
 
 Manipulation of a FASTA File
 -----------------------------
