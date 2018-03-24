@@ -271,6 +271,12 @@ You can also do all kinds of fancy things in your prompt, like color and highlig
 
 When you have a prompt you like, you can put it in your .bash_profile/.bashrc so that it is automatically set when you log in.
 
+Nohup
+------
+
+The nohup (short for "no hangup") command is useful for running a job from a terminal and then wanting to exit the terminal. When you run a job, even if you put it in the background (i.e. by using "&"), the job is tied to the terminal you are running on. When you log out of that terminal, any job tied to that terminal will be killed. This is not desirable, so you can use the nohup command which will disconnect the proccess from the terminal. Simply put "nohup" in front of the command, and you will probably want to add the "&" at the end to put it in the background so you can get your prompt back. It would look something like this:
+
+    nohup YOUR COMMAND &
 
 Awk
 ----
@@ -299,11 +305,6 @@ A double equals (==) is used for equality comparisons. This will pull out lines 
 
 Take a look at the [awk manual](https://www.gnu.org/software/gawk/manual/gawk.html) to learn more about the capabilities of awk.
 
-Nohup
-------
-
-The nohup (short for "no hangup") command is useful for running a job from a terminal and then wanting to exit the terminal. When you run a job, even if you put it in the background (i.e. by using "&"), the job is tied to the terminal you are running on. When you log out of that terminal, any job tied to that terminal will be killed. This is not desirable, so you can use the nohup command which will disconnect the proccess from the terminal. Simply put "nohup" in front of the command, and you will probably want to add the "&" at the end to put it in the background so you can get your prompt back. It would look something like this:
-
-    nohup YOUR COMMAND &
-
+**HARD CHALLENGE**:
+Go through the list of genomes (as in the Find section) and this time only search down a maximum of 6 directories and also follow symbolic links in the search. Then extract only those files that are part of either the zebrafish or C. elegans genomes. For each of those files, get the number of characters in the file and then only print files whose character count is greater than 10000. You will have to probably use find, grep, xargs, wc, and awk. You will need to look at the manual pages for each of those commands. You should be able to do this just using pipes and the commands (i.e. no intermediate files).
 
