@@ -44,18 +44,18 @@ Let\'s run our first command ... because one of the first things that\'s good to
     <ctrl-d>
     # Try this fun command:
     curl -s http://metaphorpsum.com/sentences/1000  # that's some deep stuff
-    curl -s http://metaphorpsum.com/sentences/1000 | more  # "pipe (|)," or direct, the text to the 'more' command
+    curl -s http://metaphorpsum.com/sentences/1000 | more  # 'pipe (|),' or direct, the text to the 'more' command
     <spacebar>  # next page
     <q>  # quits from more, less, 'man' pages, etc.
 
-So, ^C, ^D, 'q', and (from above) 'exit'. Generally can't hurt to try until one of them works! Now that we've seen the 'less' "paginator" (program that display output from other programs in pages, instead of all at once), here's how to move around while in it.
+So, ^C, ^D, 'q', and (from above) 'exit'. Generally can't hurt to try until one of them works! Now that we've seen the 'less' *paginator* (program that display output from other programs in pages, instead of all at once), here's how to move around while in it.
 
     curl -s http://metaphorpsum.com/sentences/1000 | fold -w 80 -s | less  # pipe to 'less' paginator, instead of 'more'
     <spacebar>  # next page
     <arrow keys, pgup, pgdn>  # forward or back through file
     g  # beginning ...
     G  # ... or end of file
-    /A<enter>  # '/' enters search mode, "A" is pattern looked for (could be any string)
+    /A<enter>  # '/' enters search mode, 'A' is pattern looked for (could be any string)
     /;<enter>  # find semicolons
     /.<enter>  # surprise! '.' is a special character that means any character
     /T.e<enter>  # should find 'The', 'They', maybe 'Toe'?
@@ -68,7 +68,7 @@ So, ^C, ^D, 'q', and (from above) 'exit'. Generally can't hurt to try until one 
 You've Got Options
 -------------------
 
-One reason you'll appreciate 'less' is that it's the default paginator for the 'man' command. 'Man' stands for "manual," and it's the main way to get more detail on any of the commands we'll introduce today. Each command can act as a basic tool, or you can add "options" or "flags" that modify the default behavior of the tool. These flags come in the form of '-v' ... or, when it's a more descriptive word, two dashes: '\-\-verbose' ... that's a common (but not universal) one that tells a tool that you want it to give you output with more detail. Sometimes, options require specifying amounts or strings, like '-o results.txt' or '\-\-output results.txt' ... or '-n 4' or "--numCPUs 4". Let's try some, and see what the man page for the "list files" command 'ls' is like.
+One reason you'll appreciate 'less' is that it's the default paginator for the 'man' command. 'man' stands for 'manual', and it's the main way to get more detail on any of the commands we'll introduce today. Each command can act as a basic tool, or you can add 'options' or 'flags' that modify the default behavior of the tool. These flags come in the form of '-v' ... or, when it's a more descriptive word, two dashes: '\-\-verbose' ... that's a common (but not universal) one that tells a tool that you want it to give you output with more detail. Sometimes, options require specifying amounts or strings, like '-o results.txt' or '\-\-output results.txt' ... or '-n 4' or '\-\-numCPUs 4'. Let's try some, and see what the man page for the 'list files' command 'ls' is like.
 
     ls -R /software
     # ack! too much going to the screen!
@@ -76,12 +76,12 @@ One reason you'll appreciate 'less' is that it's the default paginator for the '
     ls -R /software/scythe  # lists directories and files *recursively*
     # how do I know which options do what?
     man ls
-    # navigate like in "less" (up,down,pgup,pgdn,g,G,/pattern,n,N,q)
+    # navigate like in 'less' (up,down,pgup,pgdn,g,G,/pattern,n,N,q)
     # look up and try the following:
     ls -l  # if you don't say where, it lists files in your current directory
     ls -a
     ls -l -a
-    ls -la  # option "smushing" ... when no values need specifying
+    ls -la  # option 'smushing' ... when no values need specifying
     ls -ltrha
     ls -ltrha --color  # single letter (smushed) vs word options
     # Quick aside: what if I want to use same options repeatedly? and be lazy?
@@ -95,7 +95,7 @@ One reason you'll appreciate 'less' is that it's the default paginator for the '
 Getting Around
 ----------------
 
-The filesystem you're working on is like the branching root system of a tree. The top level, right at the root of the tree, is called the "root" directory, specified by '/' ... which is the divider for directory addresses, or "paths." We move around using the "change directory" command, 'cd':
+The filesystem you're working on is like the branching root system of a tree. The top level, right at the root of the tree, is called the 'root' directory, specified by '/' ... which is the divider for directory addresses, or 'paths'. We move around using the 'change directory' command, 'cd':
 
     cd  # no effect? that's because by itself it sends you home (to ~)
     cd /  # go to root of tree's root system
@@ -107,18 +107,18 @@ The filesystem you're working on is like the branching root system of a tree. Th
     pwd
     cd ~  # a shortcut to home, from anywhere
     pwd
-    cd .  # "." always means *this* directory
+    cd .  # '.' always means *this* directory
     pwd
-    cd ..  # ".." always means *one directory up*
+    cd ..  # '..' always means *one directory up*
     pwd
 
-Don't get confused between the "." directory name and filenames that start with the "." character. The latter are just valid filenames or directory names, but are usually hidden (use ls's "-a" option to see hidden files).
+Don't get confused between the '.' directory name and filenames that start with the '.' character. The latter are just valid filenames or directory names, but are usually hidden (use ls's '-a' option to see hidden files).
 
 
 Absolute and Relative Paths
 ----------------------------
   
-The sequence above was probably confusing, if you're not used to navigating filesystems this way. You can think of paths like addresses. You can tell your friend how to go to a particular store *from where they are currently* (a "relative" path), or *from the main Interstate Highway that everyone uses* (in this case, the root of the filesystem, '/' ... this is an "absolute" path). Both are valid. But absolute paths can't be confused, because they tell you where to start off, and all the steps along the way. Relative paths, on the other hand, could be totally wrong for your friend *if you assume they're somewhere they're not*. With this in mind, let's try a few more:
+The sequence above was probably confusing, if you're not used to navigating filesystems this way. You can think of paths like addresses. You can tell your friend how to go to a particular store *from where they are currently* (a 'relative' path), or *from the main Interstate Highway that everyone uses* (in this case, the root of the filesystem, '/' ... this is an 'absolute' path). Both are valid. But absolute paths can't be confused, because they tell you where to start off, and all the steps along the way. Relative paths, on the other hand, could be totally wrong for your friend *if you assume they're somewhere they're not*. With this in mind, let's try a few more:
 
     cd ~  # let's start at home
     cd ../../home/class10/  # *relative* (start here, take two steps up, then down through home and class10)
@@ -126,7 +126,7 @@ The sequence above was probably confusing, if you're not used to navigating file
     cd /home/class10/  # *absolute* (start at root, take steps)
     pwd
 
-Linux also tolerates "empty" steps and loops, even if they look ugly. So:
+Linux also tolerates 'empty' steps and loops, even if they look ugly. So:
 
     cd  # starting at your home again
     cd /home//class10/  # used two slashes; it's treated as an empty step
@@ -142,12 +142,12 @@ Tab Completion - A Real Tendon-Saver
 Using tab-completion will literally save your life. Hours of it. A single <tab> auto-completes file or directory names when there's only one name that could be completed correctly. If multiple files could satisfy the tab-completion, then nothing will happen after the first <tab>. In this case, press <tab> a second time to list all the possible completing names. Note that if you've already made a mistake that means that no files will ever be completed correctly from its current state, then <tab>'s will do nothing.
 
     touch one seven september  # create three empty files using 'touch' command
-    cat o<tab><no enter>  # will complete to "one"
+    cat o<tab><no enter>  # will complete to 'one'
     <enter>
     cat s<tab><no enter>  # completes up to 'se' since that's in common between seven and september
     <tab><no enter>  # this second tab should cause listing of seven and september
     v<tab><no enter>  # now it's unique to, and should complete to seven
-    <enter>  # runs "cat seven" command
+    <enter>  # runs 'cat seven' command
     # we often literally autocomplete commands letter by letter
     # comes in handy if we don't exactly remember what name we want
     ls /hom<tab>j<tab><tab>f<tab>  # completes to my home directory, /home/jfass/
@@ -163,13 +163,13 @@ OK, so let's get down to actually making some changes to the filesystem.
     cd  # home again
     mkdir temp  # make a directory called 'temp'
     cd temp/
-    echo "Hello, world!" > first.txt  # push text into a file using the '>' character
+    echo 'Hello, world!' > first.txt  # push text into a file using the '>' character
     file first.txt  # tells us what kind of file it is
 
 If a file isn't text, you probably don't want to look at it. Binary ('data') files get pushed to the screen by the 'cat' command, and the screen takes character sized bites and displays whatever character that bite corresponds to ... which can be weird non-printing characters like bells and interrupts that can really muck up your shell!
     
-    cat first.txt  # 'cat' means "concatenate"
-    # why "concatenate"? try this:
+    cat first.txt  # 'cat' means 'concatenate'
+    # why 'concatenate'? try this:
     cat first.txt first.txt first.txt > second.txt
     cat second.txt
     # OK, let's destroy what we just created:
@@ -187,11 +187,11 @@ Pipes ('|') allow commands to hand output to other commands, and redirection cha
 
     mkdir CLB
     cd CLB/
-    echo "first" > test.txt
+    echo 'first' > test.txt
     cat test.txt
-    echo "second" > test.txt
+    echo 'second' > test.txt
     cat test.txt
-    echo "third" >> test.txt
+    echo 'third' >> test.txt
     cat test.txt
 
 The '>' character redirects output of a command that would normally go to the screen instead into a specified file. '>' replaces, '>>' appends.
@@ -227,7 +227,7 @@ Linux remembers everything you've done (at least in the current shell session), 
 
 You can also search your history from the command line:
 
-    <ctrl-r>fir  # should find most recent command containing "fir" string ... 'echo "first" > test.txt'?
+    <ctrl-r>fir  # should find most recent command containing 'fir' string ... 'echo \'first\' > test.txt'?
     <enter>  # to run command
     <ctrl-c>  # get out of recursive search
     <ctr-r>  # repeat <ctrl-r> to find successively older string matches
