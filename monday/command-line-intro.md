@@ -253,10 +253,10 @@ Compression
 With BIG DATA(TM), you'll often see compressed files, or whole compressed folders.
 
     gzip test.txt
-    file test.txt
-    gunzip -c test.txt | more  # '-c' leaves the original file alone, but dumps expanded output to screen
-    ls -ltrha
-    gunzip test.txt
+    file test.txt.gz
+    gunzip -c test.txt.gz | more  # '-c' leaves the original file alone, but dumps expanded output to screen
+    ls -ltrha  # see? nothing's changed
+    gunzip test.txt.gz  # now the file should change
     bzip2 test.txt; bunzip2 test.txt.bz2  # note the ';' is a substitute for <enter>
 
 
@@ -271,7 +271,8 @@ Tape archives, or .tar files, are one way to compress entire folders and all con
     # .tar.gz and .tgz are *commonly used* extensions for compressed tar files, when gzip compression is used
     tar -xzvf PhiX_Illumina_RTA.tar.gz  # or whatever you called it, if you used curl
     # -x = extract, -z = use gzip/gunzip, -v = verbose (show each file in archive), -f = use a file, not a tape drive(!)
-    
+
+Note that, unlike Windows, linux does not depend on file extensions to determine file behavior (most of the time). So you could a tarball 'fish.puppy' and the extract command above should work just fine. In fact, go ahead and try this. The only thing that should be different is that tab-completion doesn't work within the 'tar' command.    
 
 Forced Removal
 ---------------
@@ -358,6 +359,7 @@ Bioinformatics, At Last! ... ?
 
 OK, let's try to do some sequence alignment (similar to a BLAST search).
 
+    # some version of BWA should already be installed, so:
     bwa mem genome.fa phix.fa > aln.sam
     # We get the following:
     # [E::bwa_idx_load] fail to locate the index files
@@ -391,7 +393,7 @@ For the curious, our problem was that we didn't index the 'target' or 'reference
     # see? summary of the alignment process / results
     cat aln.sam
 
-The resulting SAM file shows a perfect match between the query sequence ('phix.fa') and the reference ('genome.fa') ... which is good, because they're the same file (see the symbolic links section above)! Beyond that, don't worry about the SAM format; we'll get into that tomorrow.
+The resulting SAM file shows a perfect match between the query sequence ('phix.fa') and the reference ('genome.fa') ... which is good, because they're the same file (see the symbolic links section above)! Beyond that, don't worry about the SAM format; we'll get into that later.
 
 
 Paste Command
