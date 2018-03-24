@@ -492,14 +492,14 @@ write.table(data2[1:20,], file="output.txt", sep="\t", quote=F, row.names=T, col
 ```
 
 It is also possible to export data to a csv file:
-```{r echo=FALSE, results='asis'}
+```{r}
 write.csv()
 write.csv2()
 ```
 
 ## Topic 3. Basic statistics in R
 
-```{r echo=FALSE, results='asis'}
+```{r}
 library(knitr)
 kable(data.frame(Description=c("Mean", "Standard deviation", "Variance", "Minimum", "Maximum", "Median", "Range of values: minimum and maximum", "Sample quantiles", "Generic function", "Interquartile range"), R_function=c("mean()", "sd()", "var()", "min()", "max()", "median()", "range()", "quantile()", "summary()", "IQR()"), stringsAsFactors=F), align='c')
 ```
