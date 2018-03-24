@@ -18,11 +18,11 @@ To start off: there will be many commands that will fill your screen with text. 
 And once you're really done working on the command line:
 
     exit  # kills the current shell!
-    # Note that any text *following* a "#" symbol is ignored.
+    # Note that any text *following* a '#' symbol is ignored.
     # This will 'exit' (close) your shell on ganesh
     # ... you'd need another 'exit' to close your local terminal (if on a Mac / Linux system)
 
-But don't exit yet ... or if you did, just ssh back in ... We've got work to do!
+But don\'t exit yet ... or if you did, just ssh back in ... We\'ve got work to do!
 
 Command Line Basics
 --------------------
@@ -33,13 +33,13 @@ First some basics - how to look at your surroundings.
     ls   # list files here ... you should see nothing since your 'class##' homes are empty
     ls /tmp/  # list files somewhere else
 
-Let's run our first command ... because one of the first things that's good to know is *how to escape once you've started something you don't want*.
+Let\'s run our first command ... because one of the first things that\'s good to know is *how to escape once you\'ve started something you don\'t want*.
 
     sleep 1000  # wait for 1000 seconds!
     <ctrl-c>  # shows as '^C'; exits command entry without executing
     # In some cases, a different key sequence is required
     python  # enter Python interactive session
-    <ctrl-d>  # escape from some repl's ... "Read, Execute, & Print Loop"
+    <ctrl-d>  # escape from some repl\'s ... 'Read, Execute, & Print Loop'
     R  # enter R interactive session
     <ctrl-d>
     # Try this fun command:
