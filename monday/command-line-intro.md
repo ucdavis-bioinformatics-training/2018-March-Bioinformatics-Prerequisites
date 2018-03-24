@@ -227,7 +227,7 @@ Linux remembers everything you've done (at least in the current shell session), 
 
 You can also search your history from the command line:
 
-    <ctrl-r>fir  # should find most recent command containing 'fir' string ... 'echo \'first\' > test.txt'?
+    <ctrl-r>fir  # should find most recent command containing 'fir' string: echo 'first' > test.txt
     <enter>  # to run command
     <ctrl-c>  # get out of recursive search
     <ctr-r>  # repeat <ctrl-r> to find successively older string matches
@@ -244,7 +244,7 @@ Here are some more ways to make editing previous commands, or novel commands tha
     # now use left and right to move to a single word (surrounded by whitespace)
     <ctrl-k>  # delete from here to end of line
     <ctrl-w>  # delete from here to beginning of preceeding word
-    blah blah blah<ctrl-w><ctrl-w>  # leaves you with only one "blah"
+    blah blah blah<ctrl-w><ctrl-w>  # leaves you with only one 'blah'
 
 
 Compression
@@ -263,7 +263,7 @@ With BIG DATA(TM), you'll often see compressed files, or whole compressed folder
 Archives
 --------
 
-Tape archives, or .tar files, are one way to compress entire folders and all contained folders into one file. When they're further compressed they're called "tarballs." Let's grab one.
+Tape archives, or .tar files, are one way to compress entire folders and all contained folders into one file. When they're further compressed they're called 'tarballs'. Let's grab one.
 
     wget ftp://igenome:G3nom3s4u@ussd-ftp.illumina.com/PhiX/Illumina/RTA/PhiX_Illumina_RTA.tar.gz
     # ... or ...
@@ -276,10 +276,10 @@ Tape archives, or .tar files, are one way to compress entire folders and all con
 Forced Removal
 ---------------
 
-This gets a heading all its own. Because when you're on the command line, there's no "Recycle Bin". Since we've expanded a whole directory tree, we need to be able to quickly remove a directory without clearing each subdirectory and using 'rmdir'.
+This gets a heading all its own. Because when you're on the command line, there's no 'Recycle Bin'. Since we've expanded a whole directory tree, we need to be able to quickly remove a directory without clearing each subdirectory and using 'rmdir'.
 
     rm -rf PhiX  # be sure ... there's no going back!
-    # -r = recursively remove sub-directories, -f means *force* (auto-"yes")
+    # -r = recursively remove sub-directories, -f means *force* (auto-'yes')
     # We actually want to use those directories, so un-archive them again!
 
 Obviously, be careful with 'rm -rf'. 
@@ -290,9 +290,9 @@ BASH Wildcard Characters and Find
 
 When we want to specify or operate on sets of files all at once.
 
-    ls ?hiX/Illumina  # list files in Illumina sub-directory of any directory ending in "hiX"
+    ls ?hiX/Illumina  # list files in Illumina sub-directory of any directory ending in 'hiX'
     ls PhiX/Illumina/RTA/Sequence/*/*.fa  # list all .fa files a few directories down
-    # So, "?" fills in for zero or one character, "*" fills in for zero or more characters
+    # So, '?' fills in for zero or one character, '*' fills in for zero or more characters
     find . -name "*.fa"
     find . -name "*.f?"  # how is this different from the previous command?
 
@@ -306,9 +306,9 @@ We just found the phiX-174 genome, so let's copy it to our current directory so 
     # Note how we copied the 'genome.fa' file to a different name: 'phix.fa'
     wc -l phix.fa
 
-We can use the 'grep' command to search for matches to patterns (more flexibly than by using less's '/' key). 'grep' comes from "**g**lobally search for a **r**egular **e**xpression and **p**rint." 
+We can use the 'grep' command to search for matches to patterns (more flexibly than by using less's '/' key). 'grep' comes from '**g**lobally search for a **r**egular **e**xpression and **p**rint'. 
 
-    grep -c ">" phix.fa  # only one FASTA sequence entry, since only one header line (">gi|somethingsomething...")
+    grep -c '>' phix.fa  # only one FASTA sequence entry, since only one header line ('>gi|somethingsomething...')
     cat phix.fa  # this may not be useful for anything larger than a virus!
     # let's look at start codon and 2 following:
     grep "ATG......" phix.fa  # '.' characters are the single-character wildcards for grep
@@ -320,7 +320,7 @@ We can use the 'grep' command to search for matches to patterns (more flexibly t
     grep -o "ATG......" phix.fa | cut -c4-6 | sort
     # combine successive identical sequences, but count them ('-c' option)
     grep -o "ATG......" phix.fa | cut -c4-6 | sort | uniq -c
-    # and finally sort using only the 1st "field" as a key ('-k1,1'), in reverse numeric order ('-rn')
+    # and finally sort using only the 1st 'field' as a key ('-k1,1'), in reverse numeric order ('-rn')
     grep -o "ATG......" phix.fa | cut -c4-6 | sort | uniq -c | sort -rn -k1,1
     # ... which gives us the most common codons first
 
@@ -330,7 +330,7 @@ This may not be a particularly useful thing to do with a genomic FASTA file, but
 Symbolic Links
 ---------------
 
-Since copying or even moving large files (like sequence data) around your filesystem may be impractical, we can use links to reference "distant" files without duplicating the data in the files. Symbolic links are disposable pointers that refer to other files, but behave like the referenced files in commands.
+Since copying or even moving large files (like sequence data) around your filesystem may be impractical, we can use links to reference 'distant' files without duplicating the data in the files. Symbolic links are disposable pointers that refer to other files, but behave like the referenced files in commands.
 
     ln -s PhiX/Illumina/RTA/Sequence/WholeGenomeFasta/genome.fa .
     ls -ltrhaF  # notice the symbolic link pointing at its target
@@ -355,7 +355,7 @@ What went wrong? We redirected output to the 'aln.sam' file using the '>' charac
 STDOUT & STDERR
 -----------------
 
-Programs can write to two separate output streams, "standard out" (STDOUT), and "standard error" (STDERR). The former is generally for direct output of a program, while the latter is supposed to be used for reporting problems. I've seen some bioinformatics tools use STDERR to report summary statistics about the output, but this is probably bad practice. Default behavior in a lot of cases is to dump both STDOUT and STDERR to the screen, unless you specify otherwise. In order to nail down what goes where, and record it for posterity:
+Programs can write to two separate output streams, 'standard out' (STDOUT), and 'standard error' (STDERR). The former is generally for direct output of a program, while the latter is supposed to be used for reporting problems. I've seen some bioinformatics tools use STDERR to report summary statistics about the output, but this is probably bad practice. Default behavior in a lot of cases is to dump both STDOUT and STDERR to the screen, unless you specify otherwise. In order to nail down what goes where, and record it for posterity:
 
     bwa mem genome.fa phix.fa 1> aln.sam 2> aln.err
     # the 1st output, STDOUT, goes to 'aln.sam'
@@ -365,9 +365,9 @@ Programs can write to two separate output streams, "standard out" (STDOUT), and 
     cat aln.err
     # [E::bwa_idx_load] fail to locate the index files
 
-That didn't really help us with our problem, but at least you can direct output where you want it now. Saving STDOUT is pretty routine (you want your results, yes?), but remember that explicitly saving STDERR is important in a computing cluster, since you may not directly see the "screen" when you're running jobs. And even if you do, it could be a mix of STDERR from multiple jobs (if it's dumped to screen), so explicitly naming each STDERR file lets you diagnose what went wrong with which set of data, after everything's run or failed to run.
+That didn't really help us with our problem, but at least you can direct output where you want it now. Saving STDOUT is pretty routine (you want your results, yes?), but remember that explicitly saving STDERR is important in a computing cluster, since you may not directly see the 'screen' when you're running jobs. And even if you do, it could be a mix of STDERR from multiple jobs (if it's dumped to screen), so explicitly naming each STDERR file lets you diagnose what went wrong with which set of data, after everything's run or failed to run.
 
-For the curious, our problem was that we didn't index the "target" or "reference" of our sequence alignment. Try this:
+For the curious, our problem was that we didn't index the 'target' or 'reference' of our sequence alignment. Try this:
 
     bwa index genome.fa
     bwa mem genome.fa phix.fa 1> aln.sam 2> aln.err
@@ -383,10 +383,10 @@ Paste Command
 
 The paste command is useful in creating tables.
 
-    echo "WT1" >> b
-    echo "WT2" >> b
-    echo "control1" >> b
-    echo "control2" >> b
+    echo 'WT1' >> b
+    echo 'WT2' >> b
+    echo 'control1' >> b
+    echo 'control2' >> b
     # now we can number our four samples to conveniently refer to them in order
     for i in {1..4}; do echo $i >> a; done
     paste a b > c
@@ -396,7 +396,7 @@ The paste command is useful in creating tables.
 Running in the Background
 --------------------------
 
-Sometimes it's useful to continue working on the command line, even after you've executed a command that's going to take a while to finish. Normally this command would occupy the shell, and prevent you from typing in commands and receiving results. But we can "put jobs in the background" so that they don't occupy your shell directly:
+Sometimes it's useful to continue working on the command line, even after you've executed a command that's going to take a while to finish. Normally this command would occupy the shell, and prevent you from typing in commands and receiving results. But we can 'put jobs in the background' so that they don't occupy your shell directly:
 
     sleep 1000000
     <control-z>  # shows as '^Z'
@@ -426,7 +426,7 @@ If we want to delete these jobs for any reason, we can kill them using the numbe
     jobs
     # [2]+  Terminated              sleep 5000000
 
-Finally, the 'nohup' command (from "no hangup"!) makes jobs extra resistant to lost connections or terminal problems. In other words, even jobs running in the background can be terminated if one's shell dies. 'nohup' separates the running job from the shell, so it'll keep running until it dies or is actively killed by you.
+Finally, the 'nohup' command (from 'no hangup'!) makes jobs extra resistant to lost connections or terminal problems. In other words, even jobs running in the background can be terminated if one's shell dies. 'nohup' separates the running job from the shell, so it'll keep running until it dies or is actively killed by you.
 
     nohup sleep 1000000 &
     # [1] 34993
@@ -463,12 +463,12 @@ Often it's useful to define a whole string of commands to run on some input, so 
 
 Note that '$1' means 'the value of the 1st argument to the shell script' ... in other words, the text that follows the shell script name when we run it (see below).
 
-Though there are ways to run the commands in test.sh right now, it's generally useful to give yourself (and others) "execute" permissions for test.sh, really making it a shell script. Note the characters in the first (left-most) field of the file listing:
+Though there are ways to run the commands in test.sh right now, it's generally useful to give yourself (and others) 'execute' permissions for test.sh, really making it a shell script. Note the characters in the first (left-most) field of the file listing:
 
     ll test.sh
     # -rw-r--r--  1 jfass biocore   79 Aug 19 15:05 test.sh
 
-The first '-' becomes a 'd' if the "file" is actually a directory. The next three characters represent **r**ead, **w**rite, and e**x**ecute permissions for the file owner (you), followed by three characters for users in the owner's group, followed by three characters for all other users. Run the 'chmod' command to change permissions for the 'test.sh' file, adding execute permissions ('+x') for the user (you) and your group ('ug'):
+The first '-' becomes a 'd' if the 'file' is actually a directory. The next three characters represent **r**ead, **w**rite, and e**x**ecute permissions for the file owner (you), followed by three characters for users in the owner's group, followed by three characters for all other users. Run the 'chmod' command to change permissions for the 'test.sh' file, adding execute permissions ('+x') for the user (you) and your group ('ug'):
 
     chmod ug+x test.sh
     ll test.sh
