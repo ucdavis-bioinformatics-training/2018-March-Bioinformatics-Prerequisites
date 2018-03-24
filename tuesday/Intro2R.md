@@ -491,7 +491,7 @@ The R base function write.table() can be used to export a data frame or matrix t
 write.table(data2[1:20,], file="output.txt", sep="\t", quote=F, row.names=T, col.names=T)
 ```
 
-It is also possible to export data to a csv file.
+It is also possible to export data to a csv file:
 ```{r echo=FALSE, results='asis'}
 write.csv()
 write.csv2()
