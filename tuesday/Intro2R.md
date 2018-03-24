@@ -495,7 +495,6 @@ It is also possible to export data to a csv file:
 ```{r echo=FALSE, results='asis'}
 write.csv()
 write.csv2()
-#cat("\\newpage")
 ```
 
 ## Topic 3. Basic statistics in R
