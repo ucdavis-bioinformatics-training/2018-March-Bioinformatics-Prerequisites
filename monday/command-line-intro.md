@@ -183,7 +183,7 @@ If a file isn't text, you probably don't want to look at it. Binary ('data') fil
 Piping and Redirection
 -----------------------
 
-Pipes ('|') allow commands to hand output to other commands, and redirection characters ('>' and '>>') allow you to put output into files.
+Pipes ('\|') allow commands to hand output to other commands, and redirection characters ('>' and '>>') allow you to put output into files.
 
     mkdir CLB
     cd CLB/
