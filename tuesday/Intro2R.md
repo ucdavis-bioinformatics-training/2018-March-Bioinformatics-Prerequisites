@@ -468,44 +468,35 @@ head(data)
 
 Depending on the format of the file, several variants of read.table() are available to make reading a file easier.
 
-read.csv(): for reading "comma separated value" files (.csv).
+* read.csv(): for reading "comma separated value" files (.csv).
+* read.csv2(): variant used in countries that use a comma "," as decimal point and a semicolon ";" as field separators.
+* read.delim(): for reading "tab separated value" files (".txt"). By default, point(".") is used as decimal point.
+* read.delim2(): for reading "tab separated value" files (".txt"). By default, comma (",") is used as decimal point.
 
-read.csv2(): variant used in countries that use a comma "," as decimal point and a semicolon ";" as field separators.
-
-read.delim(): for reading "tab separated value" files (".txt"). By default, point(".") is used as decimal point.
-
-read.delim2(): for reading "tab separated value" files (".txt"). By default, comma (",") is used as decimal point.
-
+If you have downloaded the raw_counts.csv file to your working directory, you may use the following command to read it in.
 ```{r}
-# If you have downloaded the raw_counts.csv file to your working directory, you may use the following command to read it in.
 data2 <- read.csv(file="raw_counts.csv", stringsAsFactors=F)
-
-# Otherwise, you may read the file by providing the url to the read.csv() function.
-data2 <- read.csv(file="https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2017-August-Variant-Analysis-Workshop/master/friday/Intro2R/raw_counts.csv", stringsAsFactors=F)
-
-# To look at the file:
+```
+Otherwise, you may read the file by providing the url to the read.csv() function.
+```{r}
+data2 <- read.csv(file="https://github.com/ucdavis-bioinformatics-training/2018-March-Bioinformatics-Prerequisites/blob/master/tuesday/Intro2R/raw_counts.csv", stringsAsFactors=F)
+```
+To look at the file:
+```{r}
 head(data2)
 ```
 
-
-R base function write.table() can be used to export a data frame or matrix to a file.
-
+The R base function write.table() can be used to export a data frame or matrix to a file. To write to a file called "output.txt" in your current working directory:
 ```{r}
-# To write to a file called "output.txt" in your current working directory.
 write.table(data2[1:20,], file="output.txt", sep="\t", quote=F, row.names=T, col.names=T)
 ```
 
 It is also possible to export data to a csv file.
-
-write.csv()
-
-write.csv2()
-
-
 ```{r echo=FALSE, results='asis'}
+write.csv()
+write.csv2()
 cat("\\newpage")
 ```
-
 
 ## Topic 3. Basic statistics in R
 
@@ -562,7 +553,7 @@ lapply() is to apply a given function to every element of a list and obtain a li
 
 # To check the syntax of using lapply():
 ```{r}
-?lapply
+#?lapply()
 
 data <- as.data.frame(matrix(rnorm(49), ncol=7), stringsAsFactors=F)
 dim(data)
@@ -588,8 +579,9 @@ sapply(1:dim(data)[1], function(x){log10(sum(data[x,]))}, simplify=FALSE)
 
 ## Topic 6. Installing packages in R
 
-There are two ways to install bioconductor packages in R: biocLite(), install.packages()
+There are two main ways to install bioconductor packages in R: biocLite(), install.packages()
 
+biocLite():
 ```{r}
 source("http://bioconductor.org/biocLite.R")
 ## install core packages
@@ -599,11 +591,12 @@ source("http://bioconductor.org/biocLite.R")
 #biocLite(c("IdeoViz", "devtools"))
 ```
 
+install.packages():
 ```{r}
 #install.packages("ggplot2", repos="http://cran.us.r-project.org")
 ```
 
-Install from source of github.
+However you can also install from the source code on (for example) GitHub:
 ```{r}
 library(devtools)
 install_github("stephenturner/qqman")
@@ -611,13 +604,11 @@ install_github("stephenturner/qqman")
 
 *** biocLite() is the recommended way to install Bioconductor packages. 
 
-* Bioconductor has a repository and release schedule that differ from R (Bioconductor has a ‘devel’ branch to which new packages and updates are introduced, and a stable ‘release’ branch emitted once every 6 months to which bug fixes but not new features are introduced). This mismatch causes that the version detected by install.packages() is sometimes not the most recent 'release'. 
-
-* A consequence of the distince 'devel' branch is that install.packages() sometimes points only to the 'release' repository, while users might want to have access to the leading-edge features in the develop version. 
-
+* Bioconductor has a repository and release schedule that differ from R (Bioconductor has a ‘devel’ branch to which new packages and updates are introduced, and a stable ‘release’ branch emitted once every 6 months to which bug fixes but no new features are introduced). This causes the version detected by install.packages() to sometimes not match the most recent 'release'. 
+* A consequence of the distince 'devel' branch is that install.packages() sometimes points only to the 'release' repository, while users might want to have access to the leading-edge features in the development version. 
 * An indirect consequence of Bioconductor's structured release is that packages generally have more extensive dependences with one another.
 
-### To update the installed Bioconductor packages.
+To update the installed Bioconductor packages:
 ```{r}
 #biocLite("BiocUpgrade")
 ```
