@@ -1,7 +1,6 @@
-Introduction to R
-======================
+# Introduction to R
 
-Download [R Notebook](Intro2R.Rmd) (same content below, but .Rmd file can be used in R-Studio).
+Download [R Notebook](Intro2R.Rmd) (same content below, but .Rmd file can be used in R-Studio to produce mixed code and results).
 
 # R for Biologists - An Introduction to R (Beginner)
 
@@ -451,13 +450,14 @@ my_list[[3]][2]
 
 The R base function read.table() is a general funciton that can be used to read a file in table format. The data will be imported as a data frame.
 
+If you have downloaded the raw_counts.txt file to your working directory, you may use the following command to read it in.
 ```{r}
-# If you have downloaded the raw_counts.txt file to your working directory, you may use the following command to read it in.
 data <- read.table(file="raw_counts.txt", sep="\t", header=T, stringsAsFactors=F)
+```
 
-# There is a more convenient way to read files from the internet.
+There is a more convenient way to read files from the internet.
+```{r}
 data <- read.table(file="https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2017-August-Variant-Analysis-Workshop/master/friday/Intro2R/raw_counts.txt", sep="\t", header=T, stringsAsFactors=F)
-
 ```
 
 Take a look at the beginning part of the data frame.
@@ -493,8 +493,8 @@ write.table(data2[1:20,], file="output.txt", sep="\t", quote=F, row.names=T, col
 
 It is also possible to export data to a csv file:
 ```{r}
-write.csv()
-write.csv2()
+#?write.csv
+#?write.csv2
 ```
 
 ## Topic 3. Basic statistics in R
@@ -552,7 +552,7 @@ lapply() is to apply a given function to every element of a list and obtain a li
 
 # To check the syntax of using lapply():
 ```{r}
-#?lapply()
+#?lapply
 
 data <- as.data.frame(matrix(rnorm(49), ncol=7), stringsAsFactors=F)
 dim(data)
@@ -565,7 +565,7 @@ The function sapply() works like function lapply(), but tries to simplify the ou
 
 ```{r}
 # To check the syntax of using sapply():
-#?sapply()
+#?sapply
 
 sapply(1:dim(data)[1], function(x){log10(sum(data[x,]))})
 ```
