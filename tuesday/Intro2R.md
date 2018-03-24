@@ -500,7 +500,7 @@ cat("\\newpage")
 
 ## Topic 3. Basic statistics in R
 
-```{r echo=FALSE, results= 'asis'}
+```{r echo=FALSE, results='asis'}
 library(knitr)
 kable(data.frame(Description=c("Mean", "Standard deviation", "Variance", "Minimum", "Maximum", "Median", "Range of values: minimum and maximum", "Sample quantiles", "Generic function", "Interquartile range"), R_function=c("mean()", "sd()", "var()", "min()", "max()", "median()", "range()", "quantile()", "summary()", "IQR()"), stringsAsFactors=F), align='c')
 ```
