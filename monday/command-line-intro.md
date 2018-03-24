@@ -305,8 +305,13 @@ The quote characters " and ' are different. In general, single quotes preserve t
     echo '$VRBL'
     echo "$VRBL"
 
-However, some commands try to be 'smarter' about this behavior, so it's a little hard to predict what will happen in all cases. It's safest to experiment first when planning a command that depends on quoting ... list filenames first, instead of changing them, etc.
+However, some commands try to be 'smarter' about this behavior, so it's a little hard to predict what will happen in all cases. It's safest to experiment first when planning a command that depends on quoting ... list filenames first, instead of changing them, etc. Finally, the 'backtic' characters \` (same key - unSHIFTED - as the tielde ~) causes the shell to interpret what's between them as a command, and return the result.
 
+    echo `$VRBL`  # tries to execute a command with the name *someText*
+    newVRBL=`echo $VRBL`
+    echo $vewVRBL
+
+Delightfully confusing, eh? Just be prepared to experiment.
 
 Manipulation of a FASTA File
 -----------------------------
