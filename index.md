@@ -19,7 +19,7 @@ Tuesday
 * [Advanced Command Line Topics - HANDS-ON](tuesday/advanced-command-line.md)
 * [Using Screen to Manage Multiple Projects - TALK](tuesday/screen.pdf) 
 * [Clusters & Modules - HANDS-ON](tuesday/cluster.md)
-* [Introduction to the R Statistical Programming Language - HANDS-ON](tuesday/Intro2R.md)
+* [Introduction to the R Statistical Programming Language - HANDS-ON](tuesday/Intro2R.Rmd)
 
 Wednesday
 ------------
