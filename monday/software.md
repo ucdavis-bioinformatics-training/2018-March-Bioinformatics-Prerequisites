@@ -29,13 +29,13 @@ git has many subcommands, but the one you will use the most (unless you are crea
 
 ---
 
-**5\.** The make command will compile the source code (using a C compiler called gcc) and create the sickle executable. In order for this to work the gcc compiler must already be installed on your system. Now you can run sickle:
+**5\.** The make command will compile the source code (using a C compiler called gcc) and create the sickle executable. In order for this to work the gcc compiler must already be installed on your system. Now you can run sickle (you need to run it by typing "./sickle" because we haven't added "." to our PATH):
 
-	sickle
+	./sickle
 
 This will give you the help page for the sickle sub-commands. Run one of the sub-commands with no options to get the help page for that sub-command:
 
-	sickle pe
+	./sickle pe
 
 ---
 
@@ -70,6 +70,10 @@ Even though sickle is not in the current directory, it is run from the correct d
 	nano ~/.bash_profile
 
 Add the export line from above to the file and save it. Now, whenever you log in, the export command will automatically run.
+
+We should also add "." to our PATH so that we can run things that are in our current directory. So edit your .bash_profile again and add "." to the PATH variable (remember to separate it with a ":"):
+
+	export PATH=$PATH:<add the path from the pwd command here>:.
 
 ---
 
