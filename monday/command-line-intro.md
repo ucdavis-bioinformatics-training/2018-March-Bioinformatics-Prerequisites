@@ -235,13 +235,13 @@ REALLY CHALLENGING CHALLENGE
 
 We (the Bioinformatics Core) install all of the biology-related tools in the '/software/' directory, in our spare time. Are we more productive at any time of the year?
 
-HINT #1: Use the 'man' pages for tools we've seen already.
-HINT #2: Sometimes it's useful to turn several of the same character into only one ... for example:
+* HINT #1: Use the 'man' pages for tools we've seen already.
+* HINT #2: Sometimes it's useful to turn several of the same character into only one ... for example:
 
     tr "LOOOOL" "LOL"
 
 But maybe there's a way to make this behavior more general? See the man page for the translate command 'tr'.
-HINT #3: Got a sorted list? Squeeze all repeated entries into one using the 'uniq' command. But maybe 'uniq' can do more than just squeeze repeats.
+* HINT #3: Got a sorted list? Squeeze all repeated entries into one using the 'uniq' command. But maybe 'uniq' can do more than just squeeze repeats.
 
 
 History Repeats Itself
