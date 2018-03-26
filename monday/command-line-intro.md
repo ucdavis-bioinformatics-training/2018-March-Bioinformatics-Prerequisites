@@ -271,6 +271,10 @@ You can also search your history from the command line:
     <ctrl-c>  # get out of recursive search
     <ctr-r>  # repeat <ctrl-r> to find successively older string matches
 
+CHALLENGE
+-------------
+
+What's the first command you executed today? How many times have you used the 'man' command today? Whatever that number is, it should be more! Just kidding. Sort of.
 
 Editing Yourself
 -----------------
@@ -311,7 +315,7 @@ Tape archives, or .tar files, are one way to compress entire folders and all con
     tar -xzvf PhiX_Illumina_RTA.tar.gz  # or whatever you called it, if you used curl
     # -x = extract, -z = use gzip/gunzip, -v = verbose (show each file in archive), -f = use a file, not a tape drive(!)
 
-Note that, unlike Windows, linux does not depend on file extensions to determine file behavior (most of the time). So you could a tarball 'fish.puppy' and the extract command above should work just fine. In fact, go ahead and try this. The only thing that should be different is that tab-completion doesn't work within the 'tar' command.    
+Note that, unlike Windows, linux does not depend on file extensions to determine file behavior (most of the time). So you could name a tarball 'fish.puppy' and the extract command above should work just fine. In fact, go ahead and try this. The only thing that should be different is that tab-completion doesn't work within the 'tar' command if it doesn't see the 'correct' file extension.    
 
 Forced Removal
 ---------------
@@ -335,6 +339,15 @@ When we want to specify or operate on sets of files all at once.
     # So, '?' fills in for zero or one character, '*' fills in for zero or more characters
     find . -name "*.fa"
     find . -name "*.f?"  # how is this different from the previous command?
+
+SOMEWHAT CHALLENGING CHALLENGE
+---------------------------------
+
+Many types of software, including GNU/Linux itself, have directories named 'bin' at various levels, which are meant to hold the 'binary', compiled, executable tools themselves (as opposed to notes about the tools, data files, source code used to create the binaries, etc.). See if you can count how many 'bin' directories are in the /software directories.
+
+* HINT #1: The 'find' man page is wild and wooly; try searching for the *second* occurrence of the text '-type c'.
+* HINT #2: Acquaint yourself with the useful 'wc' tool.
+* HINT #3: The /software directory is a little special. Try searching *underneath* it, whatever that's supposed to mean. 
 
 Quick Note About the Quote(s)
 -------------------------------
