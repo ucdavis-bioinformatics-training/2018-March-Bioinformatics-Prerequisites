@@ -4,9 +4,11 @@ Intro to the Command Line
 Getting There
 --------------------------------
 
-Secure SHell ... ssh.
+Secure SHell ... SSH. Replace [class#@] with your login name in the following:
 
     ssh [class#@]ganesh.genomecenter.ucdavis.edu
+    # for example:
+    ssh class42@ganesh.genomecenter.ucdavis.edu
 
 To start off: there will be many commands that will fill your screen with text. There are multiple ways to clear the clutter, and have an empty screen:
 
@@ -101,7 +103,7 @@ The filesystem you're working on is like the branching root system of a tree. Th
     cd /  # go to root of tree's root system
     cd home  # go to where everyone's homes are
     pwd
-    cd class10  # use your actual home, not class10
+    cd class42  # use your actual home, not class42
     pwd
     cd /
     pwd
@@ -114,27 +116,32 @@ The filesystem you're working on is like the branching root system of a tree. Th
 
 Don't get confused between the '.' directory name and filenames that start with the '.' character. The latter are just valid filenames or directory names, but are usually hidden (use ls's '-a' option to see hidden files).
 
-
 Absolute and Relative Paths
 ----------------------------
   
 The sequence above was probably confusing, if you're not used to navigating filesystems this way. You can think of paths like addresses. You can tell your friend how to go to a particular store *from where they are currently* (a 'relative' path), or *from the main Interstate Highway that everyone uses* (in this case, the root of the filesystem, '/' ... this is an 'absolute' path). Both are valid. But absolute paths can't be confused, because they tell you where to start off, and all the steps along the way. Relative paths, on the other hand, could be totally wrong for your friend *if you assume they're somewhere they're not*. With this in mind, let's try a few more:
 
     cd ~  # let's start at home
-    cd ../../home/class10/  # *relative* (start here, take two steps up, then down through home and class10)
+    cd ../../home/class42/  # *relative* (start here, take two steps up, then down through home and class42)
     pwd
-    cd /home/class10/  # *absolute* (start at root, take steps)
+    cd /home/class42/  # *absolute* (start at root, take steps)
     pwd
 
 Linux also tolerates 'empty' steps and loops, even if they look ugly. So:
 
     cd  # starting at your home again
-    cd /home//class10/  # used two slashes; it's treated as an empty step
-    cd ../class10/../class10/../class10/  # back and forth a few times.
-    cd /software/bwa/../bowtie/../../home/class10/  # are you lost or something?
+    cd /home//class42/  # used two slashes; it's treated as an empty step
+    cd ../class42/../class42/../class42/  # back and forth a few times.
+    cd /software/bwa/../bowtie/../../home/class42/  # are you lost or something?
 
-There's no real point to such weird paths, but it helps illustrate how paths work. In the last example, an absolute path, we start at the root of the filesystem (the initial '/'), move down into the 'software' directory, then down from there into the 'bwa' directory, then back up (into the software directory), down into 'bowtie', then up twice (which gets you back to the root directory), then down through the familiar 'home' and your own 'class##' directories. Now, wasn't that a pain to type out all those directory names? So, let's discuss ... 
+There's no real point to such weird paths, but it helps illustrate how paths work. In the last example, an absolute path, we start at the root of the filesystem (the initial '/'), move down into the 'software' directory, then down from there into the 'bwa' directory, then back up (into the software directory), down into 'bowtie', then up twice (which gets you back to the root directory), then down through the familiar 'home' and your own 'class##' directories. 
 
+Note that the shell can be picky about how you describe a directory, or what's *in* a directory. The following two commands illustrate this difference, but just realize that you may have to experiment sometimes to get the behavior you want:
+
+    ls -la /software  # tells you about the software directory itself
+    ls -la /software/  # tells you what's *in* the software directory
+
+Now, because it can be a real pain to type out these long paths, we need to discuss ... 
 
 Tab Completion - A Real Tendon-Saver
 -------------------------------------
@@ -146,7 +153,7 @@ Using tab-completion will literally save your life. Hours of it. A single <tab> 
     <enter>
     cat s<tab><no enter>  # completes up to 'se' since that's in common between seven and september
     <tab><no enter>  # this second tab should cause listing of seven and september
-    v<tab><no enter>  # now it's unique to, and should complete to seven
+    v<tab><no enter>  # now it's unique to-, and should complete to seven
     <enter>  # runs 'cat seven' command
     # we often literally autocomplete commands letter by letter
     # comes in handy if we don't exactly remember what name we want
@@ -154,6 +161,15 @@ Using tab-completion will literally save your life. Hours of it. A single <tab> 
 
 I can't overstate how useful tab completion is. You should get used to using it constantly. Watch experienced users type and they maniacally hit tab once or twice in between almost every character. You don't have to go that far, of course, but get used to constantly getting feedback from hitting tab and you will save yourself a huge amount of typing and trying to remember weird directory and filenames.
 
+CHALLENGE
+-----------
+
+After returning to your home directory (just enter 'cd' by itself), verify that the two following commands are equivalent (replacing 'class42' with your actual username):
+
+    cd ../../home/class42/; pwd  # pwd gives you your Present Working Directory
+    cd ../../../../../../../home/class42/; pwd
+
+Why are these very different-looking commands equivalent??
 
 Create and Destroy
 -------------------
@@ -165,20 +181,30 @@ OK, so let's get down to actually making some changes to the filesystem.
     cd temp/
     echo 'Hello, world!' > first.txt  # push text into a file using the '>' character
     file first.txt  # tells us what kind of file it is
-
-If a file isn't text, you probably don't want to look at it. Binary ('data') files get pushed to the screen by the 'cat' command, and the screen takes character sized bites and displays whatever character that bite corresponds to ... which can be weird non-printing characters like bells and interrupts that can really muck up your shell!
-    
     cat first.txt  # 'cat' means 'concatenate'
+
+If a file isn't text, you probably don't want to look at it. Binary ('data') files that get pushed to the screen by the 'cat' command are chewed up in character sized bites, so your terminal displays whichever (unintended) character that bite corresponds to in the ASCII table ... which can be weird non-printing characters like bells and interrupts that can really muck up your shell! So, stick to 'cat'ing text files.
+    
     # why 'concatenate'? try this:
     cat first.txt first.txt first.txt > second.txt
     cat second.txt
     # OK, let's destroy what we just created:
     cd ../
-    rmdir temp  # shouldn't work!
+    rmdir temp  # 'rmdir' meands 'remove directory', but this shouldn't work!
     rm temp/first.txt
     rm temp/second.txt  # clear directory first
     rmdir temp  # should succeed now
 
+So, 'mkdir' and 'rmdir' to create and destroy (empty) directories. 'rm' to remove files. To create a file can be as simple as using 'echo' and the '>' (redirection) character to put text into a file. Even simpler is the 'touch' command.
+
+    touch newFile
+    ls -ltra  # look at the time listed for the file you just created
+    cat newFile  # it's empty!
+    sleep 60  # go grab some coffee
+    touch newFile
+    ls -ltra  # same time?
+
+So 'touch' creates empty files, or updates the 'last modified' time. Note that the options on the 'ls' command you used here give you a Long listing, of All files, in Reverse Time order (l, a, r, t).
 
 Piping and Redirection
 -----------------------
@@ -203,6 +229,19 @@ The '>' character redirects output of a command that would normally go to the sc
     # pipes cat to cut to sort (-r means reverse order sort, grep searches for pattern matches)
 
 This is a great way to build up a set of operations while inspecting the output of each step in turn. We'll do more of this in a bit.
+
+REALLY CHALLENGING CHALLENGE
+-------------------------------
+
+We (the Bioinformatics Core) install all of the biology-related tools in the '/software/' directory, in our spare time. Are we more productive at any time of the year?
+
+HINT #1: Use the 'man' pages for tools we've seen already.
+HINT #2: Sometimes it's useful to turn several of the same character into only one ... for example:
+
+    tr "LOOOOL" "LOL"
+
+But maybe there's a way to make this behavior more general? See the man page for the translate command 'tr'.
+HINT #3: Got a sorted list? Squeeze all repeated entries into one using the 'uniq' command. But maybe 'uniq' can do more than just squeeze repeats.
 
 
 History Repeats Itself
