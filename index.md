@@ -2,8 +2,6 @@
 ## 26 - 28 March 2018
 ## UC Davis Genome Center [*Bioinformatics Core*](http://bioinformatics.ucdavis.edu/)
 
-Link back to the raw [GitHub repository](https://github.com/ucdavis-bioinformatics-training/2018-March-Bioinformatics-Prerequisites).
-
 Monday
 ----------
 * [Introductions, and Getting Connected](monday/logging-in.md)
