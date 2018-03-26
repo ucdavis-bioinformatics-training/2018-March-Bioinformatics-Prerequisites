@@ -260,7 +260,7 @@ Linux remembers everything you've done (at least in the current shell session), 
     history | tail
     history | tail -n 30
     history | less
-    cat test.txt | cut -c 1-3 | sort -r | grep -s > reallyImportantResult.txt
+    cat test.txt | cut -c 1-3 | sort -r | grep s > reallyImportantResult.txt
     history | tail
     !560  # re-executes 560th command (yours will have different numbers; choose your last one)
 
