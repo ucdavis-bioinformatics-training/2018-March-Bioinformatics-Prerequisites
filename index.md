@@ -23,7 +23,7 @@ Wednesday
 ------------
 
 * Review and Q&A
-* [Linear Modelling in R - HANDS-ON](wednesday/stats.md)
+* [Linear Modelling in R - HANDS-ON](wednesday/WedAM.Rmd)
 * [Plotting in R with ggplot2 - HANDS-ON](wednesday/ggplot2.md)
 
 Evaluation!
