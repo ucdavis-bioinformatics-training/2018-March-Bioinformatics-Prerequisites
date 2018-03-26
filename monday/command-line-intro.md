@@ -233,7 +233,7 @@ This is a great way to build up a set of operations while inspecting the output 
 REALLY CHALLENGING CHALLENGE
 -------------------------------
 
-We (the Bioinformatics Core) install all of the biology-related tools in the '/software/' directory, in our spare time. Are we more productive at any time of the year?
+We (the Bioinformatics Core) install all of the biology-related tools in the '/software/' directory, in our spare time. Are we more productive at any time of the year? So, the idea is to look at the dates the software was installed and find when the most installations occurred.
 
 * HINT #1: Use the 'man' pages for tools we've seen already.
 * HINT #2: Sometimes it's useful to turn several of the same character into only one ... for example:
