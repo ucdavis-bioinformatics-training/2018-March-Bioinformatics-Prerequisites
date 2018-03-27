@@ -26,6 +26,8 @@ Wednesday
 * [Linear Modelling in R - HANDS-ON](wednesday/WedAM.html)
 * [Plotting in R with ggplot2 - HANDS-ON](wednesday/ggplot2.md)
 
+Some [R](Short-refcard.pdf) and [R-Studio]rstudio-IDE-cheatsheet.pdf(rstudio-IDE-cheatsheet.pdf) and [BASH](fwunixref.pdf) "cheat sheets" (quick reference cards).
+
 Evaluation!
 ----------
 
