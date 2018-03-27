@@ -123,7 +123,7 @@ $(document).ready(function () {
 
 
 <div id="introduction" class="section level1">
-<h1>Introduction</h1>
+<h1>0. Introduction</h1>
 <p>Many bioinformatics applications involving repeatedly fitting linear models to data. Examples include:</p>
 <ul>
 <li>RNA-Seq differential expression analyses</li>
@@ -149,7 +149,7 @@ $(document).ready(function () {
 </div>
 </div>
 <div id="linear-models" class="section level1">
-<h1>Linear models</h1>
+<h1>1. Linear models</h1>
 <p>A linear model is a model for a continuous outcome Y of the form <span class="math display">\[Y = \beta_0 + \beta_{1}X_{1} + \beta_{2}X_{2} + \dots + \beta_{p}X_{p} + \epsilon\]</span> The covariates X can be:</p>
 <ul>
 <li>a continuous variable (age, weight, temperature, etc.)</li>
@@ -160,7 +160,7 @@ $(document).ready(function () {
 <p>Models with all categorical covariates are referred to as ANOVA models and models with continuous covariates are referred to as linear regression models. These are all linear models, and R doesn’t distinguish between them.</p>
 </div>
 <div id="linear-models-in-r" class="section level1">
-<h1>Linear models in R</h1>
+<h1>2. Linear models in R</h1>
 <p>R uses the function <code>lm</code> to fit linear models.</p>
 <p>Read in ’lm_example_data.csv`:</p>
 <pre class="r"><code>dat &lt;- read.csv(&quot;lm_example_data.csv&quot;)
@@ -353,8 +353,9 @@ solve(t(X)%*%X)%*%t(X)%*%Y</code></pre>
 <pre><code>## (Intercept)  treatmentB  treatmentC  treatmentD  treatmentE 
 ##   1.1724940   0.4455249   0.9027755   2.5536669   7.4139642</code></pre>
 </div>
-<div id="adding-more-covariates" class="section level2">
-<h2>Adding More Covariates</h2>
+</div>
+<div id="adding-more-covariates" class="section level1">
+<h1>3. Adding More Covariates</h1>
 <div id="batch-adjustment" class="section level3">
 <h3>Batch Adjustment</h3>
 <p>Suppose we want to adjust for batch differences in our model. We do this by adding the covariate “batch” to the model formula:</p>
@@ -547,8 +548,8 @@ c1[&quot;treatmentB:timetime2&quot;]</code></pre>
 </div>
 </div>
 </div>
-<div id="continuous-covariates" class="section level2">
-<h2>Continuous Covariates</h2>
+<div id="continuous-covariates" class="section level1">
+<h1>4. Continuous Covariates</h1>
 <p>Linear models with continuous covariates (“regression models”) are fitted in much the same way:</p>
 <pre class="r"><code>continuous.model &lt;- lm(expression ~ temperature, data = dat)
 summary(continuous.model)</code></pre>
@@ -619,7 +620,6 @@ coef(scaled.mod)[2]</code></pre>
 ##          0.9464761</code></pre>
 <pre class="r"><code>cor(dat$expression, dat$temperature)</code></pre>
 <pre><code>## [1] 0.9464761</code></pre>
-</div>
 </div>
 
 

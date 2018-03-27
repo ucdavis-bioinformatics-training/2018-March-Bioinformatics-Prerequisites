@@ -9,7 +9,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Introduction
+# 0. Introduction
 Many bioinformatics applications involving repeatedly fitting linear models to data.  Examples include:
 
 * RNA-Seq differential expression analyses
@@ -31,7 +31,7 @@ We will not discuss:
 * Data-driven model selection
 * Anything that doesn't scale well when applied to 1000's of genes/SNPs/proteins
 
-# Linear models
+# 1. Linear models
 A linear model is a model for a continuous outcome Y of the form
 $$Y = \beta_0 + \beta_{1}X_{1} + \beta_{2}X_{2} + \dots + \beta_{p}X_{p} + \epsilon$$
 The covariates X can be:
@@ -45,7 +45,7 @@ The error term $\epsilon$ is assumed to be normally distributed with a variance 
 
 Models with all categorical covariates are referred to as ANOVA models and models with continuous covariates are referred to as linear regression models. These are all linear models, and R doesn't distinguish between them.
 
-# Linear models in R
+# 2. Linear models in R
 R uses the function `lm` to fit linear models.
 
 Read in 'lm_example_data.csv`:
@@ -156,7 +156,7 @@ solve(t(X)%*%X)%*%t(X)%*%Y
 coef(oneway.model)
 ```
 
-## Adding More Covariates
+# 3. Adding More Covariates
 ### Batch Adjustment
 Suppose we want to adjust for batch differences in our model.  We do this by adding the covariate "batch" to the model formula:
 ```{r}
@@ -236,7 +236,7 @@ c2 <- coef(other.2way.model)
 https://www.bioconductor.org/packages/3.7/bioc/vignettes/limma/inst/doc/usersguide.pdf
 for more details on this parameterization)
 
-## Continuous Covariates
+# 4. Continuous Covariates
 Linear models with continuous covariates ("regression models") are fitted in much the same way:
 ```{r}
 continuous.model <- lm(expression ~ temperature, data = dat)
