@@ -2,7 +2,7 @@
 ## 26 - 28 March 2018
 ## UC Davis Genome Center [*Bioinformatics Core*](http://bioinformatics.ucdavis.edu/)
 
-[Cheat Sheets](Cheat_Sheets)
+[Cheat Sheets](Cheat_Sheets/index.md)
 
 Monday
 ----------
