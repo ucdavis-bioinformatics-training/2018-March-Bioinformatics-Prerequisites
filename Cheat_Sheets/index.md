@@ -16,9 +16,11 @@
 
 * [advancedR.pdf](advancedR.pdf)
 
-### Data Transformation and Visualization
+### Data Inport/Transformation and Visualization
 
-* [data-transformation.pdf](data-transformation.pdf)
+* [data-import.pdf](data-import.pdf)
+
+data-import.pdf* [data-transformation.pdf](data-transformation.pdf)
 
 * [data-visualization-2.1.pdf](data-visualization-2.1.pdf)
 
