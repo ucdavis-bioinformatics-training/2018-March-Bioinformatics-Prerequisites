@@ -1,5 +1,5 @@
 ---
-title: "Data_in_R"
+title: "Prepare Data_in_R"
 author: "Bioinformatics Core"
 date: "`r format(Sys.Date())`"
 output:
@@ -7,11 +7,13 @@ output:
       keep_md: TRUE
 ---
 
-## Create a new RStudio project
+### Create a new RStudio project
 
 Open RStudio and create a new project
 
 * File > New Project > New Directory > New Project (name the new directory, Ex. Data_in_R) and check "use packrat with this project".
+
+Learn more about packrat see <https://rstudio.github.io/packrat/>
 
 Set some options and make sure the 'tidyverse' is installed (if not install it), and then load
 
@@ -27,25 +29,14 @@ library(tidyverse)
 
 Learn more about the tidyverse see <https://www.tidyverse.org>.
 
-## Open a new R Notebook
+### Open a new R Notebook
 
 An R notebook is an R Markdown document with chunks that can be executed independently and interactively, with output visible immediately beneath the input. More info see <https://rmarkdown.rstudio.com/r_notebooks.html>
 
 * File -> New File -> R Notebook
-* Save the Notebook (Ex. data_in_R)
+* Save the Notebook (Ex.test)
 
-## Edit the file YAML portion
-The top YAML (YAML ain't markup language) portion of the doc tells RStudio how to parse the document.
-<pre><code>---
-title: "Data_in_R"
-author: your_name
-date: "`r format(Sys.Date())`"
-output:
-    html_notebook: default
-    html_document: default
----</code></pre>
-
-## R Markdown
+### R Markdown
 
 This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
@@ -55,6 +46,44 @@ When you click the **preview** or **Knit** button a document will be generated t
 print('hello world!')
 ```</code></pre>
 
+Review the R Markdown page and R Markdown cheat sheets.
+
 Try 'knitting' to html, pdf, and doc as well as previewing the notebook. Open the resulting documents.
 
-## Download 
+### Download the data file for the workshop document and preview/open it
+
+This is the stats file generated after running samtools stats on a bam file generated from running BWA MEM.
+
+In the R console run the following command.
+```{r download1, results='hide', warning=F, error=F}
+download.file("https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2018-March-Bioinformatics-Prerequisites/master/Data_in_R/bwa_mem_Stats.log", "bwa_mem_Stats.log")
+```
+
+### Download the template Markdown workshop document and open it
+
+In the R console run the following command
+```{r download2, results='hide', warning=F, error=F}
+download.file("https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2018-March-Bioinformatics-Prerequisites/master/Data_in_R/data_in_R.Rmd", "data_in_R.Rmd")
+```
+
+### Edit the file YAML portion
+
+The top YAML (YAML ain't markup language) portion of the doc tells RStudio how to parse the document.
+
+<pre><code>---
+title: "Data_in_R"
+author: your_name
+date: current_date
+output:
+    html_notebook: default
+    html_document: default
+---</code></pre>
+
+
+### What are we going to do?
+
+We will recreate some of the plots generated with plot-bamstats on the same file
+
+You can view the output of plot-bamstats -> <https://rawgit.com/ucdavis-bioinformatics-training/2018-March-Bioinformatics-Prerequisites/master/Data_in_R/bwa_mem_Stats/bwa_mem_Stats.html>
+
+
