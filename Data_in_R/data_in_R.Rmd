@@ -421,14 +421,17 @@ l
 ```
 
 Now lets use gridExtra to plot both in the same plat
-```{r, grid}
+```{r grid}
 grid.arrange(k, l, nrow = 1)
 ```
 
 ### Fancy Multiple plots in a grid
 The gridExtra package is great for plotting multiple object in one plot.
 
-![](grid_plot.png)
+```{r grid_image, fig.width=1,fig.height=1}
+include_graphics("https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2018-March-Bioinformatics-Prerequisites/master/Data_in_R/grid_plot.png")
+```
+
 ```{r cluster}
 grid.arrange(
   g, h, i, i2, 

@@ -19,7 +19,7 @@ library(tidyverse)
 ```
 
 ```
-## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
+## ── Attaching packages ──────────────────────── tidyverse 1.2.1 ──
 ```
 
 ```
@@ -30,7 +30,7 @@ library(tidyverse)
 ```
 
 ```
-## ── Conflicts ────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ── Conflicts ─────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
 ```
@@ -624,7 +624,13 @@ grid.arrange(k, l, nrow = 1)
 ### Fancy Multiple plots in a grid
 The gridExtra package is great for plotting multiple object in one plot.
 
-![](grid_plot.png)
+
+```r
+include_graphics("https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2018-March-Bioinformatics-Prerequisites/master/Data_in_R/grid_plot.png")
+```
+
+![](https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2018-March-Bioinformatics-Prerequisites/master/Data_in_R/grid_plot.png)<!-- -->
+
 
 ```r
 grid.arrange(

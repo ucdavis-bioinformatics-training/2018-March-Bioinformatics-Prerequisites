@@ -15,7 +15,7 @@ Open RStudio and create a new project, for more info see <https://support.rstudi
 
 Learn more about packrat see <https://rstudio.github.io/packrat/>
 
-Set some options and make sure the packages 'knitr', 'tidyverse', 'reshape2', and 'gridExtra' are installed (if not install it), and then load
+Set some options and make sure the packages 'knitr', 'tidyverse', 'reshape2', and 'gr are installed (if not install it), and then load
 
 In the R console run the following commands
 
@@ -32,7 +32,7 @@ library(tidyverse)
 ```
 
 ```
-## ── Attaching packages ────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
+## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
 ```
 
 ```
@@ -43,7 +43,7 @@ library(tidyverse)
 ```
 
 ```
-## ── Conflicts ───────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ── Conflicts ────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
 ```
