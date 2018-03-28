@@ -50,7 +50,7 @@ R uses the function `lm` to fit linear models.
 
 Read in 'lm_example_data.csv`:
 ```{r}
-dat <- read.csv("lm_example_data.csv")
+dat <- read.csv("/share/biocore/workshops/2018_March_Prerequisites/lm_example_data.csv")
 head(dat)
 str(dat)
 ```
@@ -264,7 +264,6 @@ scaled.mod <- lm(scale(expression) ~ scale(temperature), data = dat)
 coef(scaled.mod)[2]
 cor(dat$expression, dat$temperature)
 ```
-
 
 
 
