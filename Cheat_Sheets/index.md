@@ -20,7 +20,7 @@
 
 * [data-import.pdf](data-import.pdf)
 
-data-import.pdf* [data-transformation.pdf](data-transformation.pdf)
+* [data-transformation.pdf](data-transformation.pdf)
 
 * [data-visualization-2.1.pdf](data-visualization-2.1.pdf)
 

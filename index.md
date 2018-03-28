@@ -30,8 +30,6 @@ Wednesday
 * [Data in R Preparation](Data_in_R/data_in_R_prepare.md)
 	* [Data in R - Final](Data_in_R/data_in_R.md)
 	
-Some [R](Short-refcard.pdf) and [R-Studio](rstudio-IDE-cheatsheet.pdf) and [BASH](fwunixref.pdf) "cheat sheets" (quick reference cards).
-
 Evaluation!
 ----------
 
