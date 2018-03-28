@@ -11,7 +11,7 @@
 
 <meta name="author" content="Bioinformatics Core" />
 
-<meta name="date" content="2018-03-27" />
+<meta name="date" content="2018-03-28" />
 
 <title>Prepare Data_in_R</title>
 
@@ -121,34 +121,55 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">Prepare Data_in_R</h1>
 <h4 class="author"><em>Bioinformatics Core</em></h4>
-<h4 class="date"><em>2018-03-27</em></h4>
+<h4 class="date"><em>2018-03-28</em></h4>
 
 </div>
 
 
 <div id="create-a-new-rstudio-project" class="section level3">
 <h3>Create a new RStudio project</h3>
-<p>Open RStudio and create a new project</p>
+<p>Open RStudio and create a new project, for more info see <a href="https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects" class="uri">https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects</a></p>
 <ul>
 <li>File &gt; New Project &gt; New Directory &gt; New Project (name the new directory, Ex. Data_in_R) and check “use packrat with this project”.</li>
 </ul>
 <p>Learn more about packrat see <a href="https://rstudio.github.io/packrat/" class="uri">https://rstudio.github.io/packrat/</a></p>
-<p>Set some options and make sure the ‘tidyverse’ is installed (if not install it), and then load</p>
+<p>Set some options and make sure the packages ‘knitr’, ‘tidyverse’, ‘reshape2’, and ‘gridExtra’ are installed (if not install it), and then load</p>
 <p>In the R console run the following commands</p>
-<pre class="r"><code>knitr::opts_chunk$set(echo = TRUE) # make sure to include the R chunks in the output
+<pre class="r"><code>if (!any(rownames(installed.packages()) == &quot;knitr&quot;)){
+  install.packages(&quot;knitr&quot;)
+}
+library(knitr)
 
 if (!any(rownames(installed.packages()) == &quot;tidyverse&quot;)){
   install.packages(&quot;tidyverse&quot;)
 }
 library(tidyverse)</code></pre>
-<pre><code>## ── Attaching packages ──────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
+<pre><code>## ── Attaching packages ────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
 <pre><code>## ✔ ggplot2 2.2.1     ✔ purrr   0.2.4
 ## ✔ tibble  1.4.2     ✔ dplyr   0.7.4
 ## ✔ tidyr   0.8.0     ✔ stringr 1.3.0
 ## ✔ readr   1.1.1     ✔ forcats 0.3.0</code></pre>
-<pre><code>## ── Conflicts ─────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+<pre><code>## ── Conflicts ───────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>if (!any(rownames(installed.packages()) == &quot;reshape2&quot;)){
+  install.packages(&quot;reshape2&quot;)
+}
+library(reshape2)</code></pre>
+<pre><code>## 
+## Attaching package: 'reshape2'</code></pre>
+<pre><code>## The following object is masked from 'package:tidyr':
+## 
+##     smiths</code></pre>
+<pre class="r"><code>if (!any(rownames(installed.packages()) == &quot;gridExtra&quot;)){
+  install.packages(&quot;gridExtra&quot;)
+}
+library(gridExtra)</code></pre>
+<pre><code>## 
+## Attaching package: 'gridExtra'</code></pre>
+<pre><code>## The following object is masked from 'package:dplyr':
+## 
+##     combine</code></pre>
 <p>Learn more about the tidyverse see <a href="https://www.tidyverse.org" class="uri">https://www.tidyverse.org</a>.</p>
 </div>
 <div id="open-a-new-r-notebook" class="section level3">
@@ -156,7 +177,7 @@ library(tidyverse)</code></pre>
 <p>An R notebook is an R Markdown document with chunks that can be executed independently and interactively, with output visible immediately beneath the input. More info see <a href="https://rmarkdown.rstudio.com/r_notebooks.html" class="uri">https://rmarkdown.rstudio.com/r_notebooks.html</a></p>
 <ul>
 <li>File -&gt; New File -&gt; R Notebook</li>
-<li>Save the Notebook (Ex.test)</li>
+<li>Save the Notebook (Ex. test)</li>
 </ul>
 </div>
 <div id="r-markdown" class="section level3">
@@ -168,6 +189,7 @@ print('hello world!')
 ```</code></pre>
 <p>Review the R Markdown page and R Markdown cheat sheets.</p>
 <p>Try ‘knitting’ to html, pdf, and doc as well as previewing the notebook. Open the resulting documents.</p>
+<p>Try executing the code chunks in the R Notebook.</p>
 </div>
 <div id="download-the-data-file-for-the-workshop-document-and-previewopen-it" class="section level3">
 <h3>Download the data file for the workshop document and preview/open it</h3>

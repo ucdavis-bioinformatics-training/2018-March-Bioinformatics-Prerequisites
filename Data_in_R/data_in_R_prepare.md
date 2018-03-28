@@ -1,7 +1,7 @@
 ---
 title: "Prepare Data_in_R"
 author: "Bioinformatics Core"
-date: "2018-03-27"
+date: "2018-03-28"
 output:
     html_document:
       keep_md: TRUE
@@ -9,18 +9,21 @@ output:
 
 ### Create a new RStudio project
 
-Open RStudio and create a new project
+Open RStudio and create a new project, for more info see <https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects>
 
 * File > New Project > New Directory > New Project (name the new directory, Ex. Data_in_R) and check "use packrat with this project".
 
 Learn more about packrat see <https://rstudio.github.io/packrat/>
 
-Set some options and make sure the 'tidyverse' is installed (if not install it), and then load
+Set some options and make sure the packages 'knitr', 'tidyverse', 'reshape2', and 'gridExtra' are installed (if not install it), and then load
 
 In the R console run the following commands
 
 ```r
-knitr::opts_chunk$set(echo = TRUE) # make sure to include the R chunks in the output
+if (!any(rownames(installed.packages()) == "knitr")){
+  install.packages("knitr")
+}
+library(knitr)
 
 if (!any(rownames(installed.packages()) == "tidyverse")){
   install.packages("tidyverse")
@@ -29,7 +32,7 @@ library(tidyverse)
 ```
 
 ```
-## ── Attaching packages ──────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
+## ── Attaching packages ────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
 ```
 
 ```
@@ -40,9 +43,45 @@ library(tidyverse)
 ```
 
 ```
-## ── Conflicts ─────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ── Conflicts ───────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
+```
+
+```r
+if (!any(rownames(installed.packages()) == "reshape2")){
+  install.packages("reshape2")
+}
+library(reshape2)
+```
+
+```
+## 
+## Attaching package: 'reshape2'
+```
+
+```
+## The following object is masked from 'package:tidyr':
+## 
+##     smiths
+```
+
+```r
+if (!any(rownames(installed.packages()) == "gridExtra")){
+  install.packages("gridExtra")
+}
+library(gridExtra)
+```
+
+```
+## 
+## Attaching package: 'gridExtra'
+```
+
+```
+## The following object is masked from 'package:dplyr':
+## 
+##     combine
 ```
 
 Learn more about the tidyverse see <https://www.tidyverse.org>.
@@ -52,7 +91,7 @@ Learn more about the tidyverse see <https://www.tidyverse.org>.
 An R notebook is an R Markdown document with chunks that can be executed independently and interactively, with output visible immediately beneath the input. More info see <https://rmarkdown.rstudio.com/r_notebooks.html>
 
 * File -> New File -> R Notebook
-* Save the Notebook (Ex.test)
+* Save the Notebook (Ex. test)
 
 ### R Markdown
 
@@ -67,6 +106,9 @@ print('hello world!')
 Review the R Markdown page and R Markdown cheat sheets.
 
 Try 'knitting' to html, pdf, and doc as well as previewing the notebook. Open the resulting documents.
+
+Try executing the code chunks in the R Notebook.
+
 
 ### Download the data file for the workshop document and preview/open it
 
