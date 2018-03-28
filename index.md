@@ -26,7 +26,6 @@ Wednesday
 
 * Review and Q&A
 * [Linear Modelling in R - HANDS-ON](wednesday/WedAM.html)
-* [Plotting in R with ggplot2 - HANDS-ON](wednesday/ggplot2.md)
 * [Data in R Preparation](Data_in_R/data_in_R_prepare.md)
 	* [Data in R - Final](Data_in_R/data_in_R.md)
 	
