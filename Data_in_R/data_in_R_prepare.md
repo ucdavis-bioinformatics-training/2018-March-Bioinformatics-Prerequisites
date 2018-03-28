@@ -11,7 +11,7 @@ output:
 
 Open RStudio and create a new project, for more info see <https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects>
 
-* File > New Project > New Directory > New Project (name the new directory, Ex. Data_in_R) and check "use packrat with this project".
+* File > New Project > New Directory > New Project (name the new directory, Ex. Data_in_R) and check "use packrat with this project" if present.
 
 Learn more about packrat see <https://rstudio.github.io/packrat/>
 
@@ -32,7 +32,7 @@ library(tidyverse)
 ```
 
 ```
-## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
+## ── Attaching packages ───────────────────────────── tidyverse 1.2.1 ──
 ```
 
 ```
@@ -43,7 +43,7 @@ library(tidyverse)
 ```
 
 ```
-## ── Conflicts ────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ── Conflicts ──────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
 ```
