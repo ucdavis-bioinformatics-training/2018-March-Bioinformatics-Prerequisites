@@ -16,7 +16,7 @@
 
 * [advancedR.pdf](advancedR.pdf)
 
-### Data Inport/Transformation and Visualization
+### Data Import/Transformation and Visualization
 
 * [data-import.pdf](data-import.pdf)
 
